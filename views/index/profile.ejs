@@ -28,8 +28,7 @@
                     <div class="tap-pane fade show active" role="tabpanel">
                         <div class="my_profile">
                             <div class="my_profile_img">
-                                <img src="https://i1.wp.com/www.nupress.grad.nu.ac.th/wp-content/uploads/2021/01/Profile.jpg?ssl=1"
-                                    class="img-profile">
+                                <img src="<%= currentUser.image %>" class="img-profile">
                             </div>
                             <div class="my_profile_data">
                                 <div class="my_profile_row">
@@ -52,6 +51,10 @@
                                 </div>
                             </div>
                         </div>
+                        <form action="/user/profile/<%= currentUser._id %>" method="POST" enctype="multipart/form-data">
+                            <input type="file" class="img-profile" name='image' accept="image/*"> 
+                            <button type="submit">Save</button>
+                        </form>
                         <hr class="line-profile">
                     </div>
                 </div>

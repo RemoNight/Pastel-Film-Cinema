@@ -45,27 +45,35 @@
 
         <span class="long-line">|</span>
         <div class="dropdown" id="dropdown">
+        <% if(!currentUser) {%>
           <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://www.majorcineplex.com/public/desktop_new_assets/img/avatar.png" alt="mdo" width="32"
-              height="32" class="rounded-circle" id="profile">
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://www.majorcineplex.com/public/desktop_new_assets/img/avatar.png" alt="mdo" width="32" height="32" class="rounded-circle"
+                  id="profile">
           </a>
+          <% } else { %> 
+            <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="<%= currentUser.image %>" alt="mdo" width="32" height="32" class="rounded-circle"
+                  id="profile">
+            </a>
+          <% } %>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="dropdown-menu">
             <div class="AvhYw nLL4f"></div>
             <% if(!currentUser) {%>
               <li><a class="dropdown-item" href="/login">Log in</a></li>
               <li><a class="dropdown-item" href="/register">Sign up</a></li>
-            <% } else { %>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
-              </li>
-            <li><a class="dropdown-item" href="/user/profile/<%= currentUser._id %>">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <div class="AvhYw nLL4f"></div>
-            <li><a class="dropdown-item" href="/logout">Sign out</a></li>
-            <% } %>
+              <% } else { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
+                </li>
+                <li><a class="dropdown-item" href="/user/profile/<%= currentUser._id %>">Profile</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <div class="AvhYw nLL4f"></div>
+                <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+                <% } %>
           </ul>
         </div>
       </div>

@@ -26,12 +26,6 @@ var movieSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Movie', movieSchema);
-// var newMovie = mongoose.model('Movie', movieSchema);
-// const allmoives = newMovie
 
-// .find({}, "name", function(err, movie) {
-//     if (err) console.log(err);
-//     console.log(movie);
-//     }).sort([["name", 1],]);
     
 

@@ -8,6 +8,10 @@ var UserSchema = new mongoose.Schema({
     email: String,
     password: String,
     confirmpassword: String,
+    image: {
+        type: String,
+        default: '/uploads/user/user.jpg'
+    },
     likes : [
         {
             type: mongoose.Schema.Types.ObjectId,

@@ -46,7 +46,7 @@ var data = [
         image: 'https://i.pinimg.com/originals/f9/89/34/f98934e9c47cf9f2edb59cf474a6fa21.jpg',
         date: '30 JULY 2019',
         time: '152 Mins',
-        genre: 'SCI-FI',
+        genre: 'Sci-Fi',
         actors: ' Dylan OBrien, Thomas brodie Sangster',
         trailer: 'https://www.youtube.com/embed/4-BTxXm8KSg',
         rating: '7.3',

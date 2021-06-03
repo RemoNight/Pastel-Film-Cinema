@@ -1,18 +1,55 @@
 <%- include('../partials/header1.ejs') %>
     <div class='container'>
-        <form action='/movie' method='POST'>
+        <form action='/movie' method='POST' enctype="multipart/form-data">  <!-- ถ้ามีการใช้ multer ต้องเพิ่ม enctype -->
             <div class="mb-3">
                 <label class="form-label">Statue name</label>
-                <input type="text" class="form-control" name='name' placeholder='Name'>
+                <input type="text" class="form-control" name='movie[name]' placeholder='Name'>
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label class="form-label">Image URL</label>
                 <input type="text" class="form-control" name='image' placeholder='URL'>
-            </div>
+            </div> -->
+
             <div class="mb-3">
-                <label class="form-label">Description</label>
-                <input type="text" class="form-control" name='desc' placeholder='Description of your collection.'>
+                <label class="form-label">Image</label>
+                <input type="file" class="form-control" name='image' accept="image/*">
             </div>
+
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="text" class="form-control" name='movie[date]' placeholder='Release Date'>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Time</label>
+                <input type="text" class="form-control" name='movie[time]' placeholder='Time'>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Genre</label>
+                <input type="text" class="form-control" name='movie[genre]' placeholder='Genre'>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Actors</label>
+                <input type="text" class="form-control" name='movie[actors]' placeholder='Actors'>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Trailer</label>
+                <input type="text" class="form-control" name='movie[trailer]' placeholder='URL of trailer'>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Rating</label>
+                <input type="text" class="form-control" name='movie[rating]' placeholder='Rating of movie'>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Type Movie</label>
+                <input type="text" class="form-control" name='movie[type]' placeholder='Showing / Coming'>
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
             <a href='/movie'>Go back</a>
         </form>

@@ -11,9 +11,11 @@ function onClick_Recommend() {
         rc.classList.add('heading-movie-1');
         ns.classList.remove('heading-movie-1');
         cs.classList.remove('heading-movie-1');
+
         rc.style.color = "rgb(207, 87, 87)";
         ns.style.color = "white"
         cs.style.color = "white"
+
         s.style.display = "none"
         c.style.display = "none"
         r.style.display = "block"
@@ -21,9 +23,11 @@ function onClick_Recommend() {
         rc.classList.add('heading-movie-1');
         ns.classList.remove('heading-movie-1');
         cs.classList.remove('heading-movie-1');
+
         rc.style.color = "rgb(207, 87, 87)";
         ns.style.color = "white"
         cs.style.color = "white"
+
         s.style.display = "none"
         c.style.display = "none"
         r.style.display = "block"
@@ -52,7 +56,6 @@ function onClick_Showing() {
         cs.style.color = "white"
         rc.style.color = "white"
         
-        l.style.display = "block"
         s.style.display = "block"
         c.style.display = "none"
         r.style.display = "none"
