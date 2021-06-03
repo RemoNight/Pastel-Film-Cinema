@@ -1,0 +1,183 @@
+body {
+    background: linear-gradient(to right, rgb(238, 174, 174) 0%, rgb(233, 203, 148) 100%);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.md-head {
+    margin-top: 10px;
+    padding-top: 10px;
+    height: 430px;
+    position: relative;
+    z-index: 2;
+    background-color: rgba(253, 253, 253, 0.2);
+}
+
+.md-head-left {
+    margin-top: 10px;
+    width: 800px;    
+}
+
+.img-logo {
+    margin-top: 10px;
+    margin-left: 33px;
+    height: 360px; 
+    width: 260px;
+}
+
+
+
+.bshn-icon-desc {
+    width: 30px; 
+    height: 30px;
+    margin-right: 20px;
+
+}
+
+.name-movie{
+    margin-left: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 2px rgb(68, 67, 67);
+}
+
+.md-head-trailer {
+    margin-top: -220px;
+    margin-left: 830px; 
+    width: 600px;
+}
+
+.md-head-detail {
+    margin-top: -360px;
+    width: 800px;
+}
+
+.li-detail {
+    list-style-type: none;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
+    margin-top: 20px;
+    margin-left: 300px;
+  
+
+}
+
+.li-img {
+    margin-left: 280px;
+    width: 200px;
+    height: 100px;
+}
+
+.iframe-trailer {
+    width: 560px; 
+    height: 315px;
+}
+
+.fav-and-buy {
+    margin-left: 335px;
+    margin-top: -75px;
+    width: 400px;
+}
+
+.fav {
+    width: 30px;
+    height: 30px;
+    background: none;
+    margin-top: -100px;
+    margin-left: -15px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.btn-buy {
+    border-radius: 6px;
+    width: 130px;
+    height: 40px;
+    color: white;
+    background: rgb(207, 87, 87);
+    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
+    box-shadow: 2px 2px 2px rgb(68, 67, 67);
+    font-weight: bold;
+}
+
+.img-review {
+    width: 50px;
+    height: 50px;
+}
+
+.about-review {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.cover-inp{
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px; 
+    width: 1270px;
+    height: 50px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgb(97, 96, 96);
+    position: relative;
+}
+
+.comment-detail {
+    margin-left: 20px;
+    margin-top: 10px;
+    padding-left: 10px;
+    background-color: rgb(218, 217, 217);
+    box-shadow: inset 1px 1px 2.5px ;
+    color: black;
+    width: 1110px;
+    height: 30px;
+}
+
+.submit-comment {
+    margin-left: 15px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px rgb(68, 67, 67);
+    background: rgb(207, 87, 87);
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
+    width: 100px;
+    height: 30px;
+}
+
+.go-back {
+    margin-left: 1100px;
+    font-size: 18px;
+    color: rgb(207, 87, 87);
+}
+
+.h5 {
+    margin-top: 30px;
+    font-weight: bold;
+    color: rgb(207, 87, 87);
+    text-shadow: 1.5px 1.5px 2px rgb(255, 255, 255);
+}
+
+#like {
+    font-size: 200%;
+    color: white;
+}
+
+#unlike {
+    font-size: 200%;
+    color: rgb(207, 87, 87);
+    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
+}
+
+.fav-none-login {
+    width: 30px;
+    height: 30px;
+    background: none;
+    margin-top: -100px;
+    margin-left: -3px;
+    margin-bottom: 20px;
+    display: flex;
+}

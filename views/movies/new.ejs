@@ -1,0 +1,21 @@
+<%- include('../partials/header1.ejs') %>
+    <div class='container'>
+        <form action='/movie' method='POST'>
+            <div class="mb-3">
+                <label class="form-label">Statue name</label>
+                <input type="text" class="form-control" name='name' placeholder='Name'>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Image URL</label>
+                <input type="text" class="form-control" name='image' placeholder='URL'>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input type="text" class="form-control" name='desc' placeholder='Description of your collection.'>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href='/movie'>Go back</a>
+        </form>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>

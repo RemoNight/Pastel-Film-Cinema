@@ -1,0 +1,31 @@
+<%- include('../partials/header1.ejs') %>
+
+
+    <link rel="stylesheet" href="stylesheets/login.css">
+
+
+    <div class="bodylogin">
+        <div class="body">
+            <div class="insideform">
+                <div class="fortagHR1">Log In
+                    <hr>
+                </div>
+                <div id="form1">
+                    <form method="POST" name="form1" action="/login">
+                        <input type="text" class="login" placeholder="Username or Email Address" name="username"> <br>
+                        <input type="password" class="login" placeholder="Password" name="password"> <br>
+                        <input type="submit" value="LOG IN" class="sub"><br>
+                        <span class="forgetPass"><a href="" id="forgetPass">Forgotten Password?</a><br><br></span>
+                    </form>
+                </div>
+            </div>
+            <div class="fortagHR2">
+                <hr>
+            </div>
+            <a href="/register"><button type="submit" class="subsignup">CREATE NEW ACCOUNT</button></a>
+        </div>
+    </div>
+
+
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,33 @@
+<%- include('../partials/header1.ejs') %>
+
+<!-- <h1>Register</h1>
+<form action='/register' method='POST'>
+    <input type='text' name='username' placeholder='username'>
+    <input type='password' name='password' placeholder='password'>
+    <button>Register now</button>
+</form> -->
+
+    <link rel="stylesheet" href="stylesheets/register.css">
+
+
+    <div class="body">
+        <div id="form2">
+            <form action="/register" method="POST" name="form2">
+                <div class="fortagHR1">Sign Up<hr></div>
+                <id id="FnLn">
+                    <input type="text" id="Fname" class="signup1" placeholder="First Name" name="firstname">
+                    <input type="text" id="Lname" class="signup1" placeholder="Last Name" name="lastname">
+                </id><br>
+                <div id="EmailAndPass">
+                    <input type="text" id="useremail" class="signup2" placeholder="Username" name="username"><br>
+                    <input type="email" id="email" class="signup2" placeholder="Email Address" name="email"><br>
+                    <input type="password" id="password" class="signup2" placeholder="Password" name="password"><br>
+                    <input type="password" id="confirmpw" class="signup2" placeholder="Confirm Password" name="confirmpassword">
+                </div><br>
+            
+                <input type="submit" value="Sign Up" id="sub"><br>
+            </form>
+        </div>
+    </div>
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,60 @@
+body {
+    background: linear-gradient(to right, rgb(238, 174, 174) 0%, rgb(233, 203, 148) 100%); 
+}
+
+.body {
+    background: rgba(253, 253, 253, 0.4);
+    border-radius: 25px;
+    width: 700px;
+    height: 600px;
+    color: black;
+    margin: 0 auto;
+    margin-top: 50px;
+    box-shadow: 4px 4px 15px rgb(97, 96, 96);
+}
+
+.fortagHR1 {
+    font-size: 3em;
+    text-align: center;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.signup1 {
+    margin-top: 20px;
+    width: 255px;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    background-color: rgb(238, 236, 236);
+    margin-left: 60px;
+    padding-left: 5px;
+    border: 1.3px solid black;
+    color: black;
+}
+
+
+.signup2 {
+    width: 575px;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    background-color: rgb(238, 236, 236);
+    margin-top: 20px;
+    margin-left: 60px;
+    padding-left: 5px;
+    border: 1.3px solid black;
+    color: black;
+}
+
+#sub {
+    font-weight: bold;
+    width: 320px;
+    height: 50px;
+    border-radius: 4px;
+    font-size: 18px;
+    background-color: rgb(247, 182, 122);
+    margin-top: 20px;
+    margin-left: 185px;
+}

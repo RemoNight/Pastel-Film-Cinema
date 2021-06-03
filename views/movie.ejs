@@ -1,0 +1,119 @@
+<!-- <%- include('partials/header2.ejs') %>
+
+    <link rel="stylesheet" href="/stylesheets/movie.css">
+
+
+    <script src="movie.js" defer></script>
+    <div>
+        <h1 class="h1">MOVIES</h1>
+        <button onclick="onClick_Showing()" class="heading-movie" id="now-showing">NOW SHOWING</button>
+        <button onclick="onClick_Coming()" class="heading-movie" id="coming-soon">COMING SOON</button>
+        <hr class="line-heading-movie">
+    </div>
+
+    <div id="movie-showing">
+
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <% if ( sort == 'All' ) {  %>
+                    &ensp; Genre
+                <% } else {  %>
+                    &ensp; Sort by : <%= sort %>
+                <% } %>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="/movie">All Movies</a></li>
+                <li><a class="dropdown-item" href="/movie/genre/Action">Action</a></li>
+                <li><a class="dropdown-item" href="/movie/genre/Fantasy">Fantasy</a></li>
+                <li><a class="dropdown-item" href="/movie/genre/Sci-fi">Sci-Fi</a></li>
+            </ul>
+        </div>
+
+        <div class="album py-5">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                    <% movie.forEach(function(movie){ %>
+                        <div class="col">
+                            <a href="/movie/<%= movie._id %>" class="detail">
+                                <div class="card shadow-sm" style="width: 16rem;">
+                                    <img src="<%= movie.image %>" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= movie.name %>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%= movie.date %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <% }); %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div id="movie-coming">
+        <div class="select-months-years">
+            <form action="" method="post" class="select-inner-next">
+                <select name="cinema" class="select-next">
+                    <option value="All">All</option>
+                    <option value="January">January 2021</option>
+                    <option value="February">February 2021</option>
+                    <option value="March">March 2021</option>
+                    <option value="Apirl">Apirl 2021</option>
+                    <option value="May">May 2021</option>
+                </select>
+            </form>
+        </div> -->
+        <!-- <div class="album py-5">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                    <div class="col">
+                        <a href="/movie-detail" class="detail">
+                            <div class="card shadow-sm" style="width: 16rem;">
+                                <img src="https://cdn.europosters.eu/image/750/posters/spider-man-miles-morales-cybernetic-swing-i100282.jpg"
+                                    class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title">SPIDER-MAN MILES MORALES</h5>
+                                    <p class="card-text">18 DEC 2019</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="album py-5">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                    <% movie.forEach(function(movie){ %>
+                        <div class="col">
+                            <a href="/movie/<%= movie._id %>" class="detail">
+                                <div class="card shadow-sm" style="width: 16rem;">
+                                    <img src="<%= movie.image %>" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= movie.name %>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%= movie.date %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('partials/footer.ejs') %> -->

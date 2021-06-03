@@ -1,0 +1,159 @@
+<%- include('../partials/header1.ejs') %>
+
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+
+    <script src="/profile.js" defer></script>
+    <div class="container">
+        <div class="box-personal">
+            <div class="bp-left">
+                <div class="bp-name">
+                    <h3 class="bp-name-h3">WELCOME</h3>
+                    <h4>
+                        <%= currentUser.firstname %>
+                            <%= currentUser.lastname %>
+                    </h4>
+                </div>
+                <div class="bp-right">
+                </div>
+            </div>
+            <div class="box-personal-tab">
+                <div class="bn-tab">
+                    <ul id="personal-tab" class="nav nav-pills mb-4" role="tablist">
+                        <li id="personal-2-tab" class="nav-item" role="tab">
+                            <a href="#" class="MYPROFILE">MY PROFILE</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="pills-tabContent" class="tab-content">
+                    <div class="tap-pane fade show active" role="tabpanel">
+                        <div class="my_profile">
+                            <div class="my_profile_img">
+                                <img src="https://i1.wp.com/www.nupress.grad.nu.ac.th/wp-content/uploads/2021/01/Profile.jpg?ssl=1"
+                                    class="img-profile">
+                            </div>
+                            <div class="my_profile_data">
+                                <div class="my_profile_row">
+                                    <div class="my_profile_label">Firstname</div>
+                                    <div class="my_profile_value">
+                                        <%= currentUser.firstname %>
+                                    </div>
+                                </div>
+                                <div class="my_profile_row">
+                                    <div class="my_profile_label">Lastname</div>
+                                    <div class="my_profile_value">
+                                        <%= currentUser.lastname %>
+                                    </div>
+                                </div>
+                                <div class="my_profile_row">
+                                    <div class="my_profile_label">Email</div>
+                                    <div class="my_profile_value">
+                                        <%= currentUser.email %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="line-profile">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button onclick="onClick_Showing()" class="heading-movie" id="now-showing">SHOW HISTORY</button>
+            <button onclick="onClick_Coming()" class="heading-movie" id="coming-soon">SHOW LIKE LIST</button>
+        </div>
+
+        <div id="movie-showing">
+
+            <div class="album py-5">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                        <div class="col">
+                            <a href="/movie-detail" class="detail">
+                                <div class="card shadow-sm" style="width: 16rem;">
+                                    <img src="https://www.i-moviehd.com/wp-content/uploads/2019/11/Star-Wars-7-The-Force-Awakens-2015-%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA-7.png"
+                                        class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">STAR WARS THE FORCE AWAKENS</h5>
+                                        <p class="card-text">18 DEC 2019</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col">
+                            <a href="/movie-detail" class="detail">
+                                <div class="card shadow-sm" style="width: 16rem;">
+                                    <img src="https://www.i-moviehd.com/wp-content/uploads/2019/11/Star-Wars-7-The-Force-Awakens-2015-%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA-7.png"
+                                        class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">STAR WARS THE FORCE AWAKENS</h5>
+                                        <p class="card-text">18 DEC 2019</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col">
+                            <a href="/movie-detail" class="detail">
+                                <div class="card shadow-sm" style="width: 16rem;">
+                                    <img src="https://www.i-moviehd.com/wp-content/uploads/2019/11/Star-Wars-7-The-Force-Awakens-2015-%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA-7.png"
+                                        class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">STAR WARS THE FORCE AWAKENS</h5>
+                                        <p class="card-text">18 DEC 2019</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col">
+                            <a href="/movie-detail" class="detail">
+                                <div class="card shadow-sm" style="width: 16rem;">
+                                    <img src="https://www.i-moviehd.com/wp-content/uploads/2019/11/Star-Wars-7-The-Force-Awakens-2015-%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA-7.png"
+                                        class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">STAR WARS THE FORCE AWAKENS</h5>
+                                        <p class="card-text">18 DEC 2019</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="movie-coming">
+            <div class="album py-5">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                        <% if ( movie.likes == 0 ) {  %>
+                            &ensp; <p class="dont-like"> You don't have a movie in your favorite. Let's add a movie to your favorite! </p> 
+                        <% } else {  %>
+                            <% movie.likes.forEach(function(liked){ %>
+                                <div class="col">
+                                    <a href="/movie/<%= liked.movies.id %>" class="detail">
+                                        <div class="card shadow-sm" style="width: 16rem;">
+                                            <img src="<%= liked.movies.image %>" class="card-img-top">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <%= liked.movies.name %>
+                                                </h5>
+                                                <!-- <p class="card-text">
+                                                    <%= liked.date %>
+                                                </p> -->
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <% }); %>
+                        <% } %>   
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <%- include('../partials/footer.ejs') %>

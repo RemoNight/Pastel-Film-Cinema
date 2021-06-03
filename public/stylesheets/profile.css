@@ -1,0 +1,122 @@
+body {
+    background: linear-gradient(to right, rgb(238, 174, 174) 0%, rgb(233, 203, 148) 100%);
+}
+
+/* .container {
+    background: green;
+}
+ */
+
+ .bp-left {
+    margin-top: 20px;
+}
+
+.bn-tab{
+    margin-top: 20px;
+/*     background: pink; */
+}
+
+.bp-name-h3 {
+    font-weight: bold;
+}
+
+.MYPROFILE {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.MYPROFILE:hover {
+    color: rgb(207, 87, 87);
+
+}
+
+/* .my_profile {
+    background: blue;    
+}
+ */
+.my_profile_data {
+/*     background: gray; */
+    margin-top: -110px;
+    margin-left: 160px;
+}
+
+.my_profile_label {
+    font-weight: bold;
+}
+
+.img-profile {
+    width: 120px;
+    height: 120px;
+}
+
+.line-profile {
+    width: 1300px;
+    height: 20px;
+    margin-top: 40px;
+    background:whitesmoke;
+    font-size: 0;
+    border: 1px solid white;
+}
+
+.heading-movie {
+    background-color: rgba(0,0,0,0);
+    font-weight: bolder;
+    color: white;
+    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
+    height: 50px;
+    font-size: 20px;
+ }
+
+.heading-movie:hover {
+    color: rgb(219, 204, 204);
+    font-size: 20px;
+}
+
+.heading-movie-1 {
+    color: rgb(207, 87, 87);
+    border-bottom: 3px solid rgb(207, 87, 87);
+}
+
+
+#coming-soon {
+    margin-left: 60px;
+}
+
+.card {
+    width: 250px;
+    height: 350px;
+}
+
+
+.detail {
+    text-decoration: none;
+    color: black;
+}
+
+.detail:hover {
+    color: rgb(207, 87, 87);
+}
+
+#movie-coming {
+    display: none;
+}
+
+.col {
+    margin-left: 100px;
+    margin-top: 5px;
+    margin-bottom: 150px;
+}
+
+.dont-like {
+    background: black;
+    color: rgb(207, 87, 87);
+    margin-top: 100px;
+    margin-left: 110px;
+    font-weight: bolder;
+    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
+    width: 85%;
+    height: 50px;
+    font-size: 30px;
+}
