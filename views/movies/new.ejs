@@ -6,7 +6,7 @@
         <form action='/movie' method='POST' enctype="multipart/form-data">  <!-- ถ้ามีการใช้ multer ต้องเพิ่ม enctype -->
             <div class="mb-3">
                 <label class="form-label">Statue name</label>
-                <input type="text" class="form-control" name='movie[name]' placeholder='Name'>
+                <input type="text" class="form-control" name='movie[name]' placeholder='Ex: divergent'>
             </div>
             <!-- <div class="mb-3">
                 <label class="form-label">Image URL</label>
@@ -20,22 +20,22 @@
 
             <div class="mb-3">
                 <label class="form-label">Date</label>
-                <input type="text" class="form-control" name='movie[date]' placeholder='Release Date'>
+                <input type="text" class="form-control" name='movie[date]' placeholder='Ex: 21 MAR 2014'>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Time</label>
-                <input type="text" class="form-control" name='movie[time]' placeholder='Time'>
+                <input type="text" class="form-control" name='movie[time]' placeholder='274 Mins'>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Genre</label>
-                <input type="text" class="form-control" name='movie[genre]' placeholder='Genre'>
+                <input type="text" class="form-control" name='movie[genre]' placeholder='Ex: Action / Adventure'>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Actors</label>
-                <input type="text" class="form-control" name='movie[actors]' placeholder='Actors'>
+                <input type="text" class="form-control" name='movie[actors]' placeholder='Ex: Theo James, Shailene Woodley'>
             </div>
 
             <div class="mb-3">
@@ -45,16 +45,16 @@
 
             <div class="mb-3">
                 <label class="form-label">Rating</label>
-                <input type="text" class="form-control" name='movie[rating]' placeholder='Rating of movie'>
+                <input type="text" class="form-control" name='movie[rating]' placeholder='Ex: 7.3'>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Type Movie</label>
-                <input type="text" class="form-control" name='movie[type]' placeholder='Showing / Coming'>
+                <input type="text" class="form-control" name='movie[type]' placeholder='Ex: showing / coming'>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href='/movie'>Go back</a>
+            <button type="submit" class="btn btn-primary" id="sub-new-edit">Save</button>
+            <a href='/movie' class="go-back">Go back</a>
         </form>
     </div>
 

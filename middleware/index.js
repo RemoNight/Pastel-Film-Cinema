@@ -1,7 +1,30 @@
 var Movie   = require('../models/movie');
 var Comment = require('../models/comment');
+var User    = require('../models/user');
 
 var middlewareObj = {};
+
+
+// check Admin
+
+middlewareObj.checkAdmin = function(req, res, next){
+    if(req.isAuthenticated()){
+        User.findById(req.user._id, function(err, currentUser){
+            if(err){
+                req.flash('error', 'You can not acess this page!');
+                res.redirect('back');
+            } else {
+                if( req.user.isAdmin ){
+                    return next();
+                }
+            }
+        });
+    } else {
+        req.flash('error', 'You need to sign in first!');
+        res.redirect('back');
+    }
+};
+
 
 // check movieOwner
 

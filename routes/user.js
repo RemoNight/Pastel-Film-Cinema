@@ -1,6 +1,7 @@
 var express = require('express'),
     router = express.Router(),
     multer  = require('multer'),
+    middleware = require('../middleware'),
     path    = require('path'),
     storage = multer.diskStorage({ 
         destination: function(req, file, callback){ 
@@ -19,7 +20,45 @@ var express = require('express'),
     upload = multer({storage: storage, fileFilter: imageFilter}),
 
     User    = require('../models/user');
+
     
+// Admin 
+
+router.get('/admin', middleware.checkAdmin, function (req, res) {
+    User.find({ isAdmin: false }, function (err, allUser) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('user/admin.ejs', { User: allUser });
+        }
+    });
+});
+
+router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
+    User.findByIdAndUpdate(req.params.id,{isAdmin: true},function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Updated User : ", result);
+            res.redirect('back');
+        }
+    });
+});
+
+router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
+    User.findByIdAndDelete(req.params.id, function(err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Deleted User : ", result);
+            res.redirect('back');
+        }
+    });
+});
+
+
+
+// Profile
 
 router.get('/profile/:id', isLoggedIn, function (req, res) {
     User.findById(req.params.id).exec(function (err, foundUsers) {

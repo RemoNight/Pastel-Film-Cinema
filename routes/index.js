@@ -62,7 +62,7 @@ router.post('/register', function(req, res){
             return res.render('index/register');
         }
         passport.authenticate('local')(req, res, function(){
-            req.flash('success', 'Welcome to PastelFilm' + user.username);
+            req.flash('success', 'Welcome to PastelFilm' + ' ' + user.username + '!');
             res.redirect('/');
         });
     });

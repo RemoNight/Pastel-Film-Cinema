@@ -1,6 +1,6 @@
 <%- include('../partials/header1.ejs') %>
 
-    <link rel="stylesheet" href="/stylesheets/show.css">
+    <link rel="stylesheet" href="/stylesheets/movie.css">
 
 
     <div class="md-head">
@@ -72,9 +72,9 @@
                     <div class="buy">
                         
                         <% if(currentUser && currentUser.isAdmin){ %>
-                            <a href="/movie/<%= movie._id %>/edit"><button class="btn-buy">EDIT</button></a>
+                            <a href="/movie/<%= movie._id %>/edit"><button class="btn-buy">EDIT &nbsp;<i class="far fa-edit"></i></button></a>
                             <form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
-                                <button class="btn-buy">DELETE</button>
+                                <button class="btn-buy">DELETE &nbsp;<i class="fas fa-trash"></i></button>
                              </form>
                         <% } else { %>
                             <button class="btn-buy">BUY TICKET!</button>

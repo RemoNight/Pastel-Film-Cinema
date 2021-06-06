@@ -1,4 +1,7 @@
 <%- include('../partials/header1.ejs') %>
+
+    <link rel="stylesheet" href="/stylesheets/movie.css">
+
     <div class='container'>
         <form action='/movie/<%= movie._id %>?_method=PUT' method='POST' enctype="multipart/form-data">  
             <div class="mb-3">
@@ -7,14 +10,14 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Image</label>
-                <img src="<%= movie.image %>" width="300px">
+                <label class="form-label">Image</label><br>
+                <img src="<%= movie.image %>" width="250px">
                 <input type="file" class="form-control" name='image' accept="image/*">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Date</label>
-                <input type="text" class="form-control" name='movie[date]' placeholder='<%= movie.date %>' value="<%= movie.name %>">
+                <input type="text" class="form-control" name='movie[date]' placeholder='<%= movie.date %>' value="<%= movie.date %>">
             </div>
 
             <div class="mb-3">
@@ -47,8 +50,8 @@
                 <input type="text" class="form-control" name='movie[type]' placeholder='<%= movie.type %>' value="<%= movie.type %>">
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href='/movie'>&nbsp;Go back</a>
+            <button type="submit" class="btn btn-primary" id="sub-new-edit">Save</button>
+            <a href='/movie' class="go-back">&nbsp;Go back</a>
         </form>
     </div>
 

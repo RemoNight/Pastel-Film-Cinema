@@ -62,16 +62,31 @@
             <% if(!currentUser) {%>
               <li><a class="dropdown-item" href="/login">Log in</a></li>
               <li><a class="dropdown-item" href="/register">Sign up</a></li>
-            <% } else { %>
+            <% } else if ( currentUser && currentUser.isAdmin ) { %>
               <li class="nav-item">
                 <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
               </li>
             <li><a class="dropdown-item" href="/user/profile/<%= currentUser._id %>">Profile</a></li>
             <li>
+              <a class="dropdown-item" href="/user/admin">Control panel</a>
+            </li>
+            <li>
               <hr class="dropdown-divider">
             </li>
             <div class="AvhYw nLL4f"></div>
             <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/user/profile/<%= currentUser._id %>">Profile</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <div class="AvhYw nLL4f"></div>
+              <li><a class="dropdown-item" href="/logout">Sign out</a></li>
             <% } %>
           </ul>
         </div>
