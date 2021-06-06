@@ -1,0 +1,55 @@
+<%- include('../partials/header1.ejs') %>
+    <div class='container'>
+        <form action='/movie/<%= movie._id %>?_method=PUT' method='POST' enctype="multipart/form-data">  
+            <div class="mb-3">
+                <label class="form-label">Statue name</label>
+                <input type="text" class="form-control" name='movie[name]' placeholder='<%= movie.name %>' value="<%= movie.name %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Image</label>
+                <img src="<%= movie.image %>" width="300px">
+                <input type="file" class="form-control" name='image' accept="image/*">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="text" class="form-control" name='movie[date]' placeholder='<%= movie.date %>' value="<%= movie.name %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Time</label>
+                <input type="text" class="form-control" name='movie[time]' placeholder='<%= movie.time %>' value="<%= movie.time %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Genre</label>
+                <input type="text" class="form-control" name='movie[genre]' placeholder='<%= movie.genre %>' value="<%= movie.genre %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Actors</label>
+                <input type="text" class="form-control" name='movie[actors]' placeholder='<%= movie.actors %>' value="<%= movie.actors %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Trailer</label>
+                <input type="text" class="form-control" name='movie[trailer]' placeholder='<%= movie.trailer %>' value="<%= movie.trailer %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Rating</label>
+                <input type="text" class="form-control" name='movie[rating]' placeholder='<%= movie.rating %>' value="<%= movie.rating %>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Type Movie</label>
+                <input type="text" class="form-control" name='movie[type]' placeholder='<%= movie.type %>' value="<%= movie.type %>">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href='/movie'>&nbsp;Go back</a>
+        </form>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>

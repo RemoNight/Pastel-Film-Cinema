@@ -1,0 +1,21 @@
+<%- include('../partials/header1.ejs') %>
+
+้<h5>Edit comment</h5>
+    <div class='container'>
+        <form action='/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=PUT' method='POST'>
+            <!-- <h5 class="h5">Write your review here!</h5> -->
+            <p class="line"><hr class="line-heading-movie"></p>
+            <% if(!currentUser) { %>
+                <img src="../uploads/user/user.jpg" alt="mdo" width="55" height="55" style="margin-top: 20px;" class="rounded-circle">
+            <% } else { %>
+                <img src="<%= currentUser.image %>" alt="mdo" width="55" height="55" style="margin-top: 20px;" class="rounded-circle">
+            <% } %>
+            <div class="cover-inp">
+                <input type="text" class="comment-detail" name='comment[text]' placeholder="<%= comment.text %>" value="<%= comment.text %>">
+                <button type="submit" class="submit-comment"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                <!-- <input type="submit" value="comment" class="submit-comment"> -->
+            </div>
+        </form>
+    </div>
+
+<%- include('../partials/footer.ejs') %>

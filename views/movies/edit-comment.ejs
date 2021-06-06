@@ -1,6 +1,6 @@
 <%- include('../partials/header1.ejs') %>
 
-    <link rel="stylesheet" href="../stylesheets/show.css">
+    <link rel="stylesheet" href="/stylesheets/show.css">
 
 
     <div class="md-head">
@@ -96,38 +96,34 @@
             
             <div class="comment">
                 <strong class="strong-comment">
-                    <%= comment.author.username %>  <i class="fas fa-user-edit"></i>
-                    <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                        <div class="about-edit-delete">
-                            <a href="/movie/<%= movie._id %>/<%= comment._id %>/edit"><button class="edit-delete">EDIT&nbsp;&nbsp;&nbsp;<i class="far fa-edit"></i></button></a>
-                            <form action="/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                <button class="edit-delete" type="submit">DELETE&nbsp;&nbsp;<i class="fa fa-trash"></i></button>
-                            </form>
-                        </div>
-                    <% } %>
+                    <%= comment.author.username %>
                 </strong>
                 <p class="text-comment">
                     <%= comment.text %>
                 </p>
+                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                    <form action="/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                        <button class="edit-delete" type="submit">DELETE&nbsp;<i class="fas fa-trash"></i></button>
+                    </form>
+                <% } %>
             </div>  
         </div>
 <% }); %>
 
-    <div class='container'>
-        <form action='/movie/<%= movie._id %>/comments' method='POST'>
-            <p class="line"><hr class="line-heading-movie"></p>
-            <% if(!currentUser) { %>
-                <img src="../uploads/user/user.jpg" alt="mdo" width="55" height="55" style="margin-top: 20px;" class="rounded-circle">
-            <% } else { %>
-                <img src="<%= currentUser.image %>" alt="mdo" width="55" height="55" style="margin-top: 20px;" class="rounded-circle">
-            <% } %>
-            <div class="cover-inp">
-                <input type="text" placeholder="Write your comment..." class="comment-detail" name='comment[text]'>
-                <button type="submit" class="submit-comment"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-            </div>
-        </form>
-    </div>
-
+<div class='container'>
+    <form action='/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=PUT' method='POST'>
+        <p class="line"><hr class="line-heading-movie"></p>
+        <% if(!currentUser) { %>
+            <img src="../uploads/user/user.jpg" alt="mdo" width="55" height="55" style="margin-top: 20px;" class="rounded-circle">
+        <% } else { %>
+            <img src="<%= currentUser.image %>" alt="mdo" width="55" height="55" style="margin-top: 20px;" class="rounded-circle">
+        <% } %>
+        <div class="cover-inp">
+            <input type="text" class="comment-detail" name='comment[text]' placeholder="<%= comment.text %>" value="<%= comment.text %>">
+            <button type="submit" class="submit-comment"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        </div>
+    </form>
+</div>
 
 
 <%- include('../partials/footer.ejs') %>

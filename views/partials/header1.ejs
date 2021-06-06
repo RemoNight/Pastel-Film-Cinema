@@ -26,13 +26,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link active" aria-current="page" href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/movie">Movies</a>
+            <a class="nav-link active" href="/movie"><i class="fa fa-film" aria-hidden="true"></i>&nbsp;&nbsp;MOVIES</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/cinema">Cinema</a>
+            <a class="nav-link active" href="/cinema"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;CINEMA</a>
           </li>
         </ul>
 
@@ -79,6 +79,18 @@
       </div>
     </div>
   </nav>
+
+  <% if( error && error.length > 0 ) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>  
+  <% } %>
+
+  <% if( success && success.length > 0 ) { %>
+      <div class="alert alert-success" role="alert">
+          <%= success %>
+      </div>
+  <% } %>
 
 
 

@@ -78,7 +78,7 @@
                 <% var i = 1; ranks.forEach(function(movie){  %>
                 <div class="col col-1">
                     <a href="/movie/<%= movie._id %>" class="detail">
-                        <div class="card shadow-sm" style="width: 16rem;">
+                        <div class="card " style="width: 16rem;">
                             <img src="<%= movie.image %>"
                                 class="card-img-top" style="height: 23rem;">
                             <div class="card-body">
@@ -103,9 +103,9 @@
                 <% showing.forEach(function(movie){  %>
                 <div class="col">
                     <a href="/movie/<%= movie._id %>" class="detail">
-                        <div class="card shadow-sm" style="width: 16rem;">
+                        <div class="card " style="width: 16rem;">
                             <img src="<%= movie.image %>"
-                                class="card-img-top">
+                                class="card-img-top" style="height: 23rem;">
                             <div class="card-body">
                                 <h5 class="card-title"><%= movie.name %></h5>
                                 <p class="card-text"><%= movie.date %></p>
@@ -129,7 +129,7 @@
                     <a href="/movie/<%= movie._id %>" class="detail">
                         <div class="card " style="width: 16rem;">
                             <img src="<%= movie.image %>"
-                                class="card-img-top">
+                                class="card-img-top" style="height: 23rem;">
                             <div class="card-body">
                                 <h5 class="card-title"><%= movie.name %></h5>
                                 <p class="card-text"><%= movie.date %></p>

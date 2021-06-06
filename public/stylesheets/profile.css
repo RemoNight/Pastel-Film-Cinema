@@ -20,6 +20,10 @@ body {
     font-weight: bold;
 }
 
+.bp-name-h4 {
+    text-transform: capitalize;
+}
+
 .MYPROFILE {
     text-decoration: none;
     color: white;
@@ -44,6 +48,10 @@ body {
 
 .my_profile_label {
     font-weight: bold;
+}
+
+.my_profile_value {
+    text-transform: capitalize;
 }
 
 .img-profile {

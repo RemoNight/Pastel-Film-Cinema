@@ -1,10 +1,13 @@
-var express = require('express'),
-    router  = express.Router(),
-    multer  = require('multer'),
-    path    = require('path'),
-    storage = multer.diskStorage({ // multer diskstorage = เก็บที่ไหน
+const { route } = require('./comments');
+
+var express     = require('express'),
+    router      = express.Router(),
+    multer      = require('multer'),
+    path        = require('path'),
+    middleware  = require('../middleware'), 
+    storage     = multer.diskStorage({ // multer diskstorage = เก็บที่ไหน
         destination: function(req, file, callback){ //callback บอกถึง folder ที่เราเก็บ file ไว้
-            callback(null, './public/uploads/');
+            callback(null, './public/uploads/movies');
         },
         filename:  function(req, file, callback){ // file name = ที่จะเก็บชื่่ออะไร , fieldname = file ประเภทไหน , path.extname = เก็บนามสกุลไฟล์
             callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
@@ -18,7 +21,7 @@ var express = require('express'),
     },
     upload = multer({storage: storage, fileFilter: imageFilter}),// กำหนดการอัพโหลด ใช้งานผ่าน packet multer ยังไง
 
-
+    Comment = require('../models/comment'),
     Movie   = require('../models/movie'),
     User    = require('../models/user'),
     Liked   = require('../models/liked');
@@ -35,9 +38,12 @@ var express = require('express'),
 // });
 
 
-router.post('/', isLoggedIn, upload.single('image'), function(req, res){ // .single = กรณีไฟล์เดียว ถ้า .field = อัพหลายไฟล์ , 'image' มาจาก name='image' ของ movies/new.ejs บรรทัดที่ 15
+
+// add new movie
+
+router.post('/', middleware.isLoggedIn, upload.single('image'), function(req, res){ // .single = กรณีไฟล์เดียว ถ้า .field = อัพหลายไฟล์ , 'image' มาจาก name='image' ของ movies/new.ejs บรรทัดที่ 15
     // req.body.movie // พวก name rating type และ บลาๆ ถูกเก็บไว้ในนี้แล้ว จาก movie[name]
-    req.body.movie.image = '/uploads/' + req.file.filename;  // เก็บ path ของ file ที่ถูกอัพโหลดขึ้นมาใน folder ชื่อ upload
+    req.body.movie.image = '/uploads/movies/' + req.file.filename;  // เก็บ path ของ file ที่ถูกอัพโหลดขึ้นมาใน folder ชื่อ upload
     req.body.movie.author = {
         id: req.user._id,
         username: req.user.username
@@ -51,15 +57,56 @@ router.post('/', isLoggedIn, upload.single('image'), function(req, res){ // .sin
         if(err){
             console.log(err);
         } else{
+            req.flash('success', 'Your movie is created');
             res.redirect('/movie');
         }
     });
 });
 
-// add new movie
 
-router.get('/new', isLoggedIn, function(req,res){
+router.get('/new', middleware.isLoggedIn, function(req,res){
     res.render('movies/new.ejs');
+});
+
+
+// edit movie 
+
+router.get('/:id/edit', middleware.checkMovieOwner, function(req, res){
+    Movie.findById(req.params.id, function(err, foundMovie){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('movies/edit.ejs', {movie: foundMovie});
+        }
+    })
+});
+
+router.put('/:id', upload.single('image'), function(req, res){
+    if(req.file) {
+        req.body.movie.image = '/uploads/movies/' + req.file.filename;
+    }
+    Movie.findByIdAndUpdate(req.params.id, req.body.movie, function(err, updatedMovie){ // req.body.movie มาจาก edit.ejs ในส่วนของ name="movie[name]" (movie == movie) เป็นต้น 
+        if(err){
+            res.redirect('/movie/');
+        } else {
+            req.flash('success', 'You edit your movie!');
+            res.redirect('/movie/' + req.params.id);
+        }
+    });
+});
+
+
+// delete movie
+
+router.delete('/:id', middleware.checkMovieOwner, function(req, res){
+    Movie.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect('/movie/');
+        } else {
+            req.flash('success', 'You delete your movie!');
+            res.redirect('/movie/');
+        }
+    });
 });
 
 
@@ -74,6 +121,25 @@ router.get("/:id", function(req, res){
         }
     });
 });
+
+// edit comment
+
+router.get('/:id/:comment_id/edit', middleware.checkCommentOwner, function(req, res){
+    Comment.findById(req.params.comment_id, function(err, foundComment){
+        if(err){
+            res.redirect('back');
+        } else {
+            Movie.findById(req.params.id).populate('comments').exec(function(err, foundMovie){
+                if(err){
+                    console.log(err);
+                } else {
+                    res.render('movies/edit-comment.ejs', { comment: foundComment, movie: foundMovie });
+                }
+            });    
+        }
+    });
+});
+
 
 
 // sorting genre
@@ -140,7 +206,7 @@ router.get('/search-movie/:name', function(req,res){
 
 // liked
 
-router.post('/:id/like', isLoggedIn, function(req, res){
+router.post('/:id/like', middleware.isLoggedIn, function(req, res){
     User.findById(req.user._id, function(err, foundUsers){
         if(err){
             console.log(err);
@@ -169,7 +235,7 @@ router.post('/:id/like', isLoggedIn, function(req, res){
     });
 });
 
-router.post('/:id/unlike', isLoggedIn, function(req, res){
+router.post('/:id/unlike', middleware.isLoggedIn, function(req, res){
     User.update( {_id: req.user._id}, { $pull: { likes: req.params.id } } ).exec(function(err){
         if(err){
             console.log(err);
@@ -188,13 +254,6 @@ router.post('/:id/unlike', isLoggedIn, function(req, res){
 
 
 
-// isLoggedIn
 
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect('/login');
-}
 
 module.exports = router;

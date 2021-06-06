@@ -93,8 +93,15 @@ body {
     display: flex;
 }
 
+.buy {
+    display: flex;
+    margin: 0 auto;
+    margin-left: -10px;
+}
+
 .btn-buy {
     border-radius: 6px;
+    margin-left: 10px;
     width: 130px;
     height: 40px;
     color: white;
@@ -114,38 +121,47 @@ body {
     margin-top: 10px;
 }
 
+.container {
+    margin: 0 auto;
+}
+
 .cover-inp{
-    
-    margin-top: 20px;
+    margin: 0 auto;
+    margin-top: -55px;
+    margin-left: 65px; 
     margin-bottom: 20px;
-    border-radius: 6px; 
-    width: 1270px;
-    height: 50px;
+    border-radius: 50px; 
+/*     width: 88%; */
+    height: 100%;
     background-color: white;
     box-shadow: 2px 2px 10px rgb(97, 96, 96);
     position: relative;
+    padding-bottom: 10px;
 }
 
 .comment-detail {
-    margin-left: 20px;
+    margin: 0 auto;
+    margin-left: 21px;
     margin-top: 10px;
     padding-left: 10px;
+    border-radius: 50px;
     background-color: rgb(218, 217, 217);
     box-shadow: inset 1px 1px 2.5px ;
+    outline: 0;
     color: black;
-    width: 1110px;
-    height: 30px;
+    width: 91%;
+    height: 35px;
 }
 
 .submit-comment {
-    margin-left: 15px;
-    border-radius: 4px;
+    margin-left: 20px;
+    color: white;
+    border-radius: 50px;
     box-shadow: 2px 2px 2px rgb(68, 67, 67);
     background: rgb(207, 87, 87);
     font-weight: bold;
-    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
-    width: 100px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 }
 
 .go-back {
@@ -180,4 +196,65 @@ body {
     margin-left: -3px;
     margin-bottom: 20px;
     display: flex;
+}
+
+.about-comment {
+    margin: 0 auto;
+    margin-left: 8%;
+    margin-bottom: 18px; 
+    display: flex;
+}
+
+.comment {
+    border-radius: 50px;
+    background-color: rgba(253, 253, 253, 0.6);
+    width: 87%;
+    padding-left: 25px;
+    padding-top: 10px; 
+}
+
+.profile-comment {
+    margin-right: 10px;
+}
+
+
+.strong-comment {
+    text-transform: capitalize;
+    color: rgb(207, 87, 87);
+    text-shadow: 1px 1px black;
+    font-size: 1.1em;
+    display: flex;
+}
+
+.line-heading-movie {
+    width: 1105px;
+    height: 20px;
+    background: white;
+    font-size: 0;
+    border: 1.8px solid white;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.line{
+    margin-top: 50px;
+    
+}
+
+.edit-delete {
+    border-radius: 50px; 
+    margin-left: 10px;
+    width: 130px;
+    height: 40px;
+    color: white;
+    background: rgb(207, 87, 87);
+    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
+    box-shadow: 2px 2px 2px rgb(68, 67, 67);
+    font-weight: bold;
+}
+
+.about-edit-delete {
+    display: flex;
+    margin: 0 auto;
+    margin-left: 67%;
 }
