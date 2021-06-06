@@ -52,6 +52,9 @@ router.get('/register', function(req, res){
 
 router.post('/register', function(req, res){
     var newUser = new User({username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email, myfav: req.body.myfav});
+    if(req.body.adminCode === 'topsecret') {
+        newUser.isAdmin = true;
+    }
     User.register(newUser, req.body.password, function(err, user){
         if(err) {
             console.log(err);

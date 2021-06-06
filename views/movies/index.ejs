@@ -10,11 +10,12 @@
             <button onclick="onClick_Showing()" class="heading-movie" id="now-showing">NOW SHOWING</button>
             <button onclick="onClick_Coming()" class="heading-movie" id="coming-soon">COMING SOON</button>
         </p>
-    <hr class="line-heading-movie">
+        <hr class="line-heading-movie">
     </div>
 
-    <div id="movie-showing">
 
+
+    <div id="movie-showing">
         <div class="dropdown">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,6 +35,11 @@
                 <li><a class="dropdown-item" href="/movie/genre-showing/Fantasy">Fantasy</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-showing/Sci-fi">Sci-Fi</a></li>
             </ul>
+
+            <% if( currentUser && currentUser.isAdmin ) { %>
+                <a href="/movie/new"><button type="button" class="btn btn-outline" style="color: white; margin: 0 auto; margin-top: -3%; margin-left: 2%;">Add new movies</button></a>
+            <% } %>
+
         </div>
 
         <div class="album py-5">
@@ -60,8 +66,9 @@
             </div>
         </div>
 
-    </div>
 
+    </div>
+    
 
 
     <div id="movie-coming">
@@ -97,6 +104,11 @@
                 <li><a class="dropdown-item" href="/movie/genre-coming/Fantasy">Fantasy</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-coming/Sci-fi">Sci-Fi</a></li>
             </ul>
+
+            <% if( currentUser && currentUser.isAdmin ) { %>
+                <a href="/movie/new"><button type="button" class="btn btn-outline" style="color: white; margin: 0 auto; margin-top: -3%; margin-left: 2%;">Add new movies</button></a>
+            <% } %>
+
         </div>
         
         <div class="album py-5">

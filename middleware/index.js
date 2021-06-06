@@ -12,10 +12,10 @@ middlewareObj.checkMovieOwner = function(req, res, next){
                 req.flash('error', 'Movie not found :( ');
                 res.redirect('back');
             } else {
-                if ( foundMovie.author.id.equals(req.user._id) ) { //equals เป็น function ในการเช็คค่าว่าข้อมูลเท่ากับข้อมูลใน DB รึเปล่า
+                if ( req.user.isAdmin ) { //equals เป็น function ในการเช็คค่าว่าข้อมูลเท่ากับข้อมูลใน DB รึเปล่า
                     next();
                 } else {
-                    req.flash('error', 'You dont have permission to do this action.');
+                    req.flash('error', 'You dont have permission to do this action!');
                     res.redirect('back');
                 }
             }
@@ -35,7 +35,7 @@ middlewareObj.checkCommentOwner = function(req, res, next){
                 req.flash('error', 'Comment not found :( ');
                 res.redirect('back');
             } else {
-                if ( foundComment.author.id.equals(req.user._id) ) { //equals เป็น function ในการเช็คค่าว่าข้อมูลเท่ากับข้อมูลใน DB รึเปล่า
+                if ( foundComment.author.id.equals(req.user._id) || req.user.isAdmin ) { //equals เป็น function ในการเช็คค่าว่าข้อมูลเท่ากับข้อมูลใน DB รึเปล่า
                     next();
                 } else {
                     req.flash('error', 'You dont have permission to do this action.');
