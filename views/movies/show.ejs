@@ -5,82 +5,84 @@
 
     <div class="md-head">
         <div class="md-head-container">
-            <div class="md-head-left">
+            
                 <div class="md-head-logo">
                     <img src="<%= movie.image %>" class="img-logo">
                 </div>
                 <div class="md-head-detail">
-                    <ul>
+                    <div class="total-detail">
                         <p class="name-movie">
                             <%= movie.name%>
                         </p>
-                        <li class="li-detail"><img
-                                src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-time.svg"
-                                class="bshn-icon-desc">
+                    
+                        <p class="li-detail"><img
+                            src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-time.svg"
+                            class="bshn-icon-desc">
                             <%= movie.time %>
-                        </li>
-                        <li class="li-detail"><img
-                                src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-tag.svg"
-                                class="bshn-icon-desc">
+                        </p>
+                        <p class="li-detail"><img
+                            src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-tag.svg"
+                            class="bshn-icon-desc">
                             <%= movie.genre %>
-                        </li>
-                        <li class="li-detail"><img
-                                src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-date.svg"
-                                class="bshn-icon-desc">
+                        </p>
+                        <p class="li-detail"><img
+                            src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-date.svg"
+                            class="bshn-icon-desc">
                             <%= movie.date %>
-                        </li>
-                        <li class="li-detail">
+                        </p>
+                        <p class="li-detail">
                             ACTORS: <%= movie.actors %>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="md-head-trailer">
-                <div class="trailerVdo">
-                    <iframe class="iframe-trailer" src="<%= movie.trailer %>" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="fav-and-buy">
-                <!-- <div class="fav">
-                <img src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-favorite.svg">
-            </div> -->
-                <% if(!currentUser) { %>
-                    <form action="/login" method="POST">
-                        <button type="submit" class="fav-none-login"><i class="far fa-heart" id="like"></i></button>
-                    </form>
-                    <% } else { %>
-                        <div class="container-fluid mt-3" style="height: 50px;">
-                            <!-- function for check that user like or not -->
-                            <% var match=0; var lid='' ; %>
-                                <% currentUser.likes.forEach(function(liked){ if ( liked.movies.id==movie.id ) {
-                                    match=1; lid=liked._id; } }); %>
-                                    <% if( match==1 ) { %>
-                                        <form action="/movie/<%= lid %>/unlike" method="POST">
-                                            <button type="submit" class="fav"><i class="fa fa-heart"
-                                                    id="unlike"></i></button>
-                                        </form>
-                                    <% } else { %>
-                                        <form action="/movie/<%= movie._id %>/like" method="POST">
-                                            <button type="submit" class="fav"><i class="far fa-heart" id="like"></i></button>
-                                        </form>
-                                    <% } %>
-                        </div>
-                    <% } %>
-                    <div class="buy">
-                        
-                        <% if(currentUser && currentUser.isAdmin){ %>
-                            <a href="/movie/<%= movie._id %>/edit"><button class="btn-buy">EDIT &nbsp;<i class="far fa-edit"></i></button></a>
-                            <form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
-                                <button class="btn-buy">DELETE &nbsp;<i class="fa fa-trash"></i></button>
-                             </form>
-                        <% } else { %>
-                            <button class="btn-buy">BUY TICKET!</button>
-                        <% } %>
+                        </p>
                     </div>
+                    <div class="fav-and-buy">
+                        <!-- <div class="fav">
+                        <img src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-favorite.svg">
+                        </div> -->
+                            <% if(!currentUser) { %>
+                                <form action="/login" method="POST">
+                                    <button type="submit" class="fav-none-login"><i class="far fa-heart" id="like"></i></button>
+                                </form>
+                            <% } else { %>
+                                    <div class="container-fluid mt-3" style="height: 50px;">
+                                        <!-- function for check that user like or not -->
+                                            <% var match=0; var lid='' ; %>
+                                            <% currentUser.likes.forEach(function(liked){ if ( liked.movies.id==movie.id ) {
+                                                match=1; lid=liked._id; } }); %>
+                                            <% if( match==1 ) { %>
+                                                <form action="/movie/<%= lid %>/unlike" method="POST">
+                                                    <button type="submit" class="fav"><i class="fa fa-heart" id="unlike"></i></button>
+                                                </form>
+                                            <% } else { %>
+                                                <form action="/movie/<%= movie._id %>/like" method="POST">
+                                                    <button type="submit" class="fav"><i class="far fa-heart" id="like"></i></button>
+                                                </form>
+                                            <% } %>
+                                    </div>
+                            <% } %>
+                            <div class="buy">
+                                    
+                                <% if( currentUser && currentUser.status === 'admin' || currentUser && currentUser.status === 'boss' ){ %>
+                                    <a href="/movie/<%= movie._id %>/edit"><button class="btn-buy">EDIT &nbsp;<i class="far fa-edit"></i></button></a>
+                                    <form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
+                                        <button class="btn-buy">DELETE &nbsp;<i class="fa fa-trash"></i></button>
+                                    </form>
+                                <% } else { %>
+                                    <button class="btn-buy">BUY TICKET!</button>
+                        
+                                <% } %>
+                            </div>
+                    </div>
+                    
+                </div>
+
+              
+         
+
+            <div class="md-head-trailer">
+                <iframe class="iframe-trailer" src="<%= movie.trailer %>" allowfullscreen style="width: 100%;">
+                </iframe>
             </div>
+
         </div>
     </div>
 
@@ -97,7 +99,9 @@
             <div class="comment">
                 <strong class="strong-comment">
                     <%= comment.author.username %>  <i class="fas fa-user-edit"></i>
-                    <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+
+                    <% if( !currentUser ){ %>
+                    <% } else if(currentUser && comment.author.id.equals(currentUser._id) || currentUser.status === 'admin' || currentUser.status === 'boss' ) { %>
                         <div class="about-edit-delete">
                             <a href="/movie/<%= movie._id %>/<%= comment._id %>/edit"><button class="edit-delete">EDIT&nbsp;&nbsp;&nbsp;<i class="far fa-edit"></i></button></a>
                             <form action="/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">

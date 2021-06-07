@@ -25,17 +25,23 @@ var express = require('express'),
 // Admin 
 
 router.get('/admin', middleware.checkAdmin, function (req, res) {
-    User.find({ isAdmin: false }, function (err, allUser) {
+    User.find({status: 'user'}, function (err, allUser) {
         if (err) {
             console.log(err);
         } else {
-            res.render('user/admin.ejs', { User: allUser });
+            User.find({ status: 'admin' }, function (err, allAdmin) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    res.render('user/admin.ejs', { User: allUser, Admin: allAdmin });
+                }
+            });
         }
     });
 });
 
 router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
-    User.findByIdAndUpdate(req.params.id,{isAdmin: true},function (err, result) {
+    User.findByIdAndUpdate(req.params.id,{status: 'admin'},function (err, result) {
         if (err) {
             console.log(err);
         } else {
@@ -44,6 +50,18 @@ router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
         }
     });
 });
+
+router.post('/admin/retire/:id', middleware.checkAdmin, function (req, res) {
+    User.findByIdAndUpdate(req.params.id,{status: 'user'},function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Updated User : ", result);
+            res.redirect('back');
+        }
+    });
+});
+
 
 router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
     User.findByIdAndDelete(req.params.id, function(err, result) {

@@ -14,7 +14,7 @@ middlewareObj.checkAdmin = function(req, res, next){
                 req.flash('error', 'You can not acess this page!');
                 res.redirect('back');
             } else {
-                if( req.user.isAdmin ){
+                if( currentUser.status === 'admin' || currentUser.status === 'boss' ){ //equals เป็น function ในการเช็คค่าว่าข้อมูลเท่ากับข้อมูลใน DB รึเปล่า
                     return next();
                 }
             }
@@ -26,28 +26,6 @@ middlewareObj.checkAdmin = function(req, res, next){
 };
 
 
-// check movieOwner
-
-middlewareObj.checkMovieOwner = function(req, res, next){
-    if(req.isAuthenticated()){
-        Movie.findById(req.params.id, function(err, foundMovie){
-            if ( err ) {
-                req.flash('error', 'Movie not found :( ');
-                res.redirect('back');
-            } else {
-                if ( req.user.isAdmin ) { //equals เป็น function ในการเช็คค่าว่าข้อมูลเท่ากับข้อมูลใน DB รึเปล่า
-                    next();
-                } else {
-                    req.flash('error', 'You dont have permission to do this action!');
-                    res.redirect('back');
-                }
-            }
-        });
-    } else {
-        req.flash('error', 'You need to sign in first!');
-        res.redirect('back');
-    }
-}
 
 // check commentOwner
 
@@ -58,7 +36,7 @@ middlewareObj.checkCommentOwner = function(req, res, next){
                 req.flash('error', 'Comment not found :( ');
                 res.redirect('back');
             } else {
-                if ( foundComment.author.id.equals(req.user._id) || req.user.isAdmin ) { //equals เป็น function ในการเช็คค่าว่าข้อมูลเท่ากับข้อมูลใน DB รึเปล่า
+                if ( foundComment.author.id.equals(req.user._id) || req.user.status === 'admin' || req.user.status === 'boss' ) { //equals เป็น function ในการเช็คค่าว่าข้อมูลเท่ากับข้อมูลใน DB รึเปล่า
                     next();
                 } else {
                     req.flash('error', 'You dont have permission to do this action.');

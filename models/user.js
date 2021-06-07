@@ -12,9 +12,9 @@ var UserSchema = new mongoose.Schema({
         type: String,
         default: '/uploads/user/user.jpg'
     },
-    isAdmin: {
-        type: Boolean, 
-        default: false
+    status: {
+        type: String, 
+        default: 'user'
     },
     likes : [
         {

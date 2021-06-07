@@ -1,0 +1,12 @@
+body {
+    background: linear-gradient(to right, rgb(238, 174, 174) 0%, rgb(233, 203, 148) 100%);
+}
+
+.card-title {
+    text-transform: capitalize;
+}
+
+.card-body {
+    padding-left: 28px;
+}
+

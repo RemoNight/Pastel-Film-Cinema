@@ -63,7 +63,7 @@
             <% if(!currentUser) {%>
               <li><a class="dropdown-item" href="/login">Log in</a></li>
               <li><a class="dropdown-item" href="/register">Sign up</a></li>
-              <% } else if ( currentUser && currentUser.isAdmin ) { %>
+              <% } else if ( currentUser.status === 'admin' || currentUser.status === 'boss' ) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
                 </li>

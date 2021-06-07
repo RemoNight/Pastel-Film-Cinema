@@ -7,18 +7,19 @@ body {
 }
 
 .md-head {
-    margin-top: 10px;
-    padding-top: 10px;
-    height: 430px;
-    position: relative;
-    z-index: 2;
-    background-color: rgba(253, 253, 253, 0.2);
+    /* margin-top: 10px; */
+    /* padding-top: 10px; */
+    height: 100%;
+    padding-bottom: 40px;
+    /* position: relative; */
+    /* z-index: 2; */
+    /* background-color: rgba(253, 253, 253, 0.2); */
+    background-color: green;
+    width: 100%;
+    display: flex;
 }
 
-.md-head-left {
-    margin-top: 10px;
-    width: 800px;    
-}
+
 
 .img-logo {
     margin-top: 10px;
@@ -37,22 +38,39 @@ body {
 }
 
 .name-movie{
-    margin-left: 300px;
+    /* margin-left: 300px; */
     font-size: 20px;
     font-weight: bold;
     color: white;
     text-shadow: 2px 2px 2px rgb(68, 67, 67);
 }
-
-.md-head-trailer {
-    margin-top: -220px;
-    margin-left: 830px; 
-    width: 600px;
+.md-head-container{
+    display: flex;
+    width: 100%;
 }
-
+.md-head-trailer {
+    /* margin-top: -220px;
+    margin-left: 830px;  */
+    width: 120%;
+    background-color: pink;
+}
+iframe{
+    /* width: 100%;
+    height: 100%;  */
+    width: 120%;
+}
+.total-detail{
+    background-color: orange;
+    height:auto;
+    width: 70%;
+   
+}
 .md-head-detail {
-    margin-top: -360px;
-    width: 800px;
+    /* margin-top: -360px; */
+    /* width: 800px; */
+    width:100% ;
+
+    /* background-color: turquoise; */
 }
 
 .li-detail {
@@ -61,7 +79,7 @@ body {
     color: white;
     text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
     margin-top: 20px;
-    margin-left: 300px;
+    /* margin-left: 300px; */
   
 
 }
@@ -78,19 +96,21 @@ body {
 }
 
 .fav-and-buy {
-    margin-left: 335px;
-    margin-top: -75px;
-    width: 400px;
+    margin-left: 2px; 
+    /* margin-top: 75px;  */
+    width:70%;
+    background-color: blue;
+   
 }
 
 .fav {
     width: 30px;
     height: 30px;
     background: none;
-    margin-top: -100px;
-    margin-left: -15px;
-    margin-bottom: 20px;
-    display: flex;
+    /* margin-top: -100px;
+    margin-left: -15px; */
+    /* margin-bottom: 20px; */
+    /* display: flex; */
 }
 
 .buy {
@@ -192,7 +212,7 @@ body {
     width: 30px;
     height: 30px;
     background: none;
-    margin-top: -100px;
+    /* margin-top: -100px; */
     margin-left: -3px;
     margin-bottom: 20px;
     display: flex;

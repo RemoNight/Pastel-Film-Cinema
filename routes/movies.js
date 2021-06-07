@@ -71,7 +71,7 @@ router.get('/new', middleware.isLoggedIn, function(req,res){
 
 // edit movie 
 
-router.get('/:id/edit', middleware.checkMovieOwner, function(req, res){
+router.get('/:id/edit', middleware.checkAdmin, function(req, res){
     Movie.findById(req.params.id, function(err, foundMovie){
         if(err){
             console.log(err);
@@ -98,7 +98,7 @@ router.put('/:id', upload.single('image'), function(req, res){
 
 // delete movie
 
-router.delete('/:id', middleware.checkMovieOwner, function(req, res){
+router.delete('/:id', middleware.checkAdmin, function(req, res){
     Movie.findByIdAndRemove(req.params.id, function(err){
         if(err){
             res.redirect('/movie/');
