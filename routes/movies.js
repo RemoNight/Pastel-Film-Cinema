@@ -110,7 +110,8 @@ router.delete('/:id', middleware.checkAdmin, function(req, res){
 });
 
 
-// comments
+
+// comments //show movie
 
 router.get("/:id", function(req, res){
     Movie.findById(req.params.id).populate('comments').exec(function(err, foundMovie){
@@ -133,12 +134,13 @@ router.get('/:id/:comment_id/edit', middleware.checkCommentOwner, function(req, 
                 if(err){
                     console.log(err);
                 } else {
-                    res.render('movies/edit-comment.ejs', { comment: foundComment, movie: foundMovie });
+                    res.render('comments/edit.ejs', { comment: foundComment, movie: foundMovie });
                 }
             });    
         }
     });
 });
+
 
 
 

@@ -9,4 +9,7 @@ body {
 .card-body {
     padding-left: 28px;
 }
-
+.container{
+    width: 90%;
+    margin: 0 auto;
+}

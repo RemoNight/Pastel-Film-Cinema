@@ -1,9 +1,125 @@
 <%- include('../partials/header1.ejs') %>
 
-้<h5>Edit comment</h5>
+    <link rel="stylesheet" href="/stylesheets/show.css">
+
+    <!---------------------------- Detail movie part ---------------------------->
+
+    <div class="album py-5">
+        <div class="container" >
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                <div class="col col-1">
+                    <img src="<%= movie.image %>" class="img-logo" style="width: 16rem;">
+                </div>
+
+                <div class="col">
+                    <p class="name-movie"><%= movie.name %></p>
+                    <p class="p-detail"><img
+                        src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-time.svg"
+                        class="bshn-icon-desc">
+                        <%= movie.time %>
+                    </p>
+                    <p class="p-detail"><img
+                        src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-tag.svg"
+                        class="bshn-icon-desc">
+                        <%= movie.genre %>
+                    </p>
+                    <p class="p-detail"><img
+                        src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-date.svg"
+                        class="bshn-icon-desc">
+                        <%= movie.date %>
+                    </p>
+                    <p class="p-detail">ACTORS: <%= movie.actors %></p> 
+                    <div class="fav-and-buy">
+                        <% if(!currentUser) { %>
+                            <form action="/login" method="POST">
+                                <button type="submit" class="fav-none-login"><i class="far fa-heart" id="like"></i></button>
+                            </form>
+                        <% } else { %>
+                                <span class="container-fluid mt-3" style="height: 50px;">
+                                    <!-- function for check that user like or not -->
+                                        <% var match=0; var lid='' ; %>
+                                        <% currentUser.likes.forEach(function(liked){ if ( liked.movies.id==movie.id ) {
+                                            match=1; lid=liked._id; } }); %>
+                                        <% if( match==1 ) { %>
+                                            <form action="/movie/<%= lid %>/unlike" method="POST">
+                                                <button type="submit" class="fav"><i class="fa fa-heart" id="unlike"></i></button>
+                                            </form>
+                                        <% } else { %>
+                                            <form action="/movie/<%= movie._id %>/like" method="POST">
+                                                <button type="submit" class="fav"><i class="far fa-heart" id="like"></i></button>
+                                            </form>
+                                        <% } %>
+                                </span>
+                        <% } %>
+                        <span class="buy">
+                            <% if( currentUser && currentUser.status === 'admin' || currentUser && currentUser.status === 'boss' ){ %>
+                                <a href="/movie/<%= movie._id %>/edit"><button class="btn btn-primary btn-edit">EDIT &nbsp;<i class="far fa-edit"></i></button></a>
+                                <form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-primary btn-delete">DELETE &nbsp;<i class="fa fa-trash"></i></button>
+                                </form>
+                            <% } else { %>
+                                <button class="btn btn-primary btn-buy" >BUY TICKET!</button>
+                            <% } %>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col col-3">
+                    <iframe class="iframe-trailer" src="<%= movie.trailer %>" allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!---------------------------- Comment part ---------------------------->
+
+    <div class="about-review">
+        <h1>Rating & Review</h1>
+    </div>
+
+    <% movie.comments.forEach(function(comment){ %>
+        <div class="about-comment ">
+            <div class="profile-comment">
+                <img src="<%= comment.author.image %>" alt="mdo" width="40" height="40" class="rounded-circle">
+            </div>
+
+            <!-- nav -->
+
+            <div class="navbar comment">
+                <div class="container-fluid strong-comment">
+                    <p class="navbar-brand" style="font-weight: bold;"><%= comment.author.username %> <i class="fas fa-user-edit"></i></p>
+
+                    <% if( !currentUser ){ %>
+                    <% } else if(currentUser && comment.author.id.equals(currentUser._id) || currentUser.status === 'admin' || currentUser.status === 'boss' ) { %>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" style="border-radius: 50px;"><i class="fas fa-cog"></i></button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li><a class="dropdown-item" href="/movie/<%= movie._id %>/<%= comment._id %>/edit"><button class="btn btn-primary edit-delete">EDIT &nbsp;<i class="far fa-edit"></i></button></a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form action="/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-primary edit-delete" type="submit" style="margin-left: 16px;">DELETE &nbsp;<i class="fa fa-trash"></i></button>
+                                </form> 
+                            </li>
+                            </ul>
+                        </div>
+                    <% } %>    
+                </div> <br>
+
+                <p class="text-comment">
+                    <%= comment.text %>
+                </p>
+
+            </div>
+        </div>
+    <% }); %>
+
     <div class='container'>
         <form action='/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=PUT' method='POST'>
-            <!-- <h5 class="h5">Write your review here!</h5> -->
             <p class="line"><hr class="line-heading-movie"></p>
             <% if(!currentUser) { %>
                 <img src="../uploads/user/user.jpg" alt="mdo" width="55" height="55" style="margin-top: 20px;" class="rounded-circle">
@@ -13,7 +129,6 @@
             <div class="cover-inp">
                 <input type="text" class="comment-detail" name='comment[text]' placeholder="<%= comment.text %>" value="<%= comment.text %>">
                 <button type="submit" class="submit-comment"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                <!-- <input type="submit" value="comment" class="submit-comment"> -->
             </div>
         </form>
     </div>

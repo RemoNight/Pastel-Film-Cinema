@@ -16,7 +16,7 @@
 
 
     <div id="movie-showing">
-        <div class="dropdown">
+        <div class="dropdown" style="background-color: aqua; padding-left: 100px;">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 <% if ( sort == 'All' ) {  %>
@@ -37,10 +37,10 @@
             </ul>
 
             
-            <% if( !currentUser ) { %> 
+            <!-- <% if( !currentUser ) { %> 
             <% } else if( currentUser.status === 'admin' || currentUser.status === 'boss' ) { %>
                 <a href="/movie/new"><button type="button" class="btn btn-outline" style="color: white; margin: 0 auto; margin-top: -3%; margin-left: 2%;">Add new movies</button></a>
-            <% } %>
+            <% } %> -->
 
         </div>
 
@@ -87,7 +87,7 @@
             </form>
         </div> -->
 
-        <div class="dropdown">
+        <div class="dropdown" style="background-color: aqua;">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 <% if ( sort == 'All' ) {  %>

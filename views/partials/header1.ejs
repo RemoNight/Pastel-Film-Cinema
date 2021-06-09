@@ -24,17 +24,63 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;HOME</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/movie"><i class="fa fa-film" aria-hidden="true"></i>&nbsp;&nbsp;MOVIES</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/cinema"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;CINEMA</a>
-          </li>
-        </ul>
+        <% if ( !currentUser ) { %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/movie"><i class="fa fa-film" aria-hidden="true"></i>&nbsp;&nbsp;MOVIES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/cinema"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;CINEMA</a>
+            </li>
+          </ul>
+        <% } else if ( currentUser.status === 'admin' || currentUser.status === 'boss' ) { %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/movie"><i class="fa fa-film" aria-hidden="true"></i>&nbsp;&nbsp;MOVIES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/cinema"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;CINEMA</a>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="nav-link active dropdown-toggle" href="/user/admin" role="button" 
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user-cog"></i>&nbsp;&nbsp;CONTROL SYSTEM
+                </a>
+    
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/movie/new">Create new movie</a></li>
+                    <li><a class="dropdown-item" href="/movie/new/cinema">Create new cinema</a></li>
+                    <li><a class="dropdown-item" href="/user/admin">Admin management</a></li>
+                    <!-- <li><a class="dropdown-item" href="/movie/genre-showing/Adventure">Adventure</a></li>
+                    <li><a class="dropdown-item" href="/movie/genre-showing/Drama">Drama</a></li>
+                    <li><a class="dropdown-item" href="/movie/genre-showing/Horror">Horror</a></li>
+                    <li><a class="dropdown-item" href="/movie/genre-showing/Fantasy">Fantasy</a></li>
+                    <li><a class="dropdown-item" href="/movie/genre-showing/Sci-fi">Sci-Fi</a></li> -->
+                </ul>
+              </div>
+              <!-- <a class="nav-link active" href="/user/admin"><i class="fas fa-user-cog"></i>&nbsp;&nbsp;CONTROL SYSTEM </a> -->
+            </li>
+          </ul>
+        <% } else { %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/movie"><i class="fa fa-film" aria-hidden="true"></i>&nbsp;&nbsp;MOVIES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/cinema"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;CINEMA</a>
+            </li>
+          </ul>
+        <% } %>
 
         <form action="/movie/search-movie" class="search-bar" method="POST">
           <input type="search" name="search" pattern=".*\S.*" required>
@@ -63,22 +109,7 @@
             <% if(!currentUser) {%>
               <li><a class="dropdown-item" href="/login">Log in</a></li>
               <li><a class="dropdown-item" href="/register">Sign up</a></li>
-              <% } else if ( currentUser.status === 'admin' || currentUser.status === 'boss' ) { %>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/user/profile/<%= currentUser._id %>">Profile</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/user/admin">Control panel</a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <div class="AvhYw nLL4f"></div>
-                <li><a class="dropdown-item" href="/logout">Sign out</a></li>
-                <% } else { %>
+            <% } else { %>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
                   </li>
@@ -90,7 +121,7 @@
                   </li>
                   <div class="AvhYw nLL4f"></div>
                   <li><a class="dropdown-item" href="/logout">Sign out</a></li>
-                <% } %>
+            <% } %>
           </ul>
         </div>
       </div>
