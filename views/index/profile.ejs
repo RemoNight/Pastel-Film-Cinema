@@ -67,63 +67,33 @@
 
         <div id="movie-showing">
 
-            <div class="album py-5">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-                        <div class="col">
-                            <a href="/movie-detail" class="detail">
-                                <div class="card shadow-sm" style="width: 16rem;">
-                                    <img src="https://www.i-moviehd.com/wp-content/uploads/2019/11/Star-Wars-7-The-Force-Awakens-2015-%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA-7.png"
-                                        class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">STAR WARS THE FORCE AWAKENS</h5>
-                                        <p class="card-text">18 DEC 2019</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col">
-                            <a href="/movie-detail" class="detail">
-                                <div class="card shadow-sm" style="width: 16rem;">
-                                    <img src="https://www.i-moviehd.com/wp-content/uploads/2019/11/Star-Wars-7-The-Force-Awakens-2015-%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA-7.png"
-                                        class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">STAR WARS THE FORCE AWAKENS</h5>
-                                        <p class="card-text">18 DEC 2019</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col">
-                            <a href="/movie-detail" class="detail">
-                                <div class="card shadow-sm" style="width: 16rem;">
-                                    <img src="https://www.i-moviehd.com/wp-content/uploads/2019/11/Star-Wars-7-The-Force-Awakens-2015-%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA-7.png"
-                                        class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">STAR WARS THE FORCE AWAKENS</h5>
-                                        <p class="card-text">18 DEC 2019</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col">
-                            <a href="/movie-detail" class="detail">
-                                <div class="card shadow-sm" style="width: 16rem;">
-                                    <img src="https://www.i-moviehd.com/wp-content/uploads/2019/11/Star-Wars-7-The-Force-Awakens-2015-%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA-7.png"
-                                        class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">STAR WARS THE FORCE AWAKENS</h5>
-                                        <p class="card-text">18 DEC 2019</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- <div class="album py-5"> -->
+                <!-- <div class="container"> -->
+                    <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3"> -->
+                        <% if (currentUser) { %>
+                            <div class="container-fluid row mt-3"  style="height: 300px;">
+                                <% Booking.forEach(function(thisBooking){ %>
+                                    <div class="row col-4 mx-3 card card-cover text-white bg-dark rounded-5 shadow-lg h-100">
+                                        <div class="col-6">
+                                            <img src="<%= thisBooking.moviesImage %>" height="300px" overflow: hidden;>
+                                        </div>
+                                        <div class="col-6" style="position: relative; height: 300px; padding-top: 50px;">
+                                            <h3><%= thisBooking.moviesName %></h3>
+                                            <div class="container-fluid" style="height: 10px;"></div>
+                                            <h5>Seat: &emsp;&emsp;&nbsp;<%= thisBooking.seats %></h5>
+                                            <h5>Date: &emsp;&emsp;<%= thisBooking.date %></h5>
+                                            <h5>Time: &emsp;&emsp;<%= thisBooking.time %></h5>
+                                            <h5>Theater: &ensp;&nbsp;<%= thisBooking.theater %></h5>
+                                            <span class="big-dot" style="position: absolute; right: 0; top: 10px; background-color: gray;"></span>
+                                            <img src="<%= thisBooking.cinemaImage %>" style="width: 100px; position: absolute; right: 0; bottom: 10px;">
+                                        </div>
+                                    </div>   
+                                <% }); %>
+                            </div>
+                        <% } %>
+                    <!-- </div> -->
+                <!-- </div> -->
+            <!-- </div> -->
         </div>
 
 

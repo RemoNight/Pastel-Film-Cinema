@@ -1,0 +1,63 @@
+<%- include('../partials/header1.ejs') %>
+
+<link rel="stylesheet" href="/stylesheets/movie.css">
+
+    <div class='container'>
+        <form action='/cinema/<%= Cinemas._id %>?_method=PUT' method="POST" enctype="multipart/form-data">  <!-- ถ้ามีการใช้ multer ต้องเพิ่ม enctype -->
+            <div class="mb-3">
+                <label class="form-label">Statue name</label>
+                <input type="text" class="form-control" name='cinema[name]' placeholder='<%= Cinemas.name %>' value='<%= Cinemas.name %>'>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" class="form-control" name='image' accept="image/*">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Logo</label>
+                <input type="file" class="form-control" name='logo' accept="image/*">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Area</label>
+                <input type="text" class="form-control" name='cinema[area]' placeholder='<%= Cinemas.area %>' value='<%= Cinemas.area %>'>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Slogan</label>
+                <input type="text" class="form-control" name='cinema[slogan]' placeholder='<%= Cinemas.slogan %>' value='<%= Cinemas.slogan %>'>
+            </div>
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addModal" style="width: 200px; margin-bottom: 10px;">
+                Save
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="addModal" data-bs-backdrop="static" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">CREATE A MOVIE</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to create this movie ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <button type="submit" class="btn btn-primary" id="sub-new-edit">Save</button> -->
+            <a href='/cinema' class="go-back">Go back</a>
+        </form>
+    </div>
+
+<%- include('../partials/footer.ejs') %>

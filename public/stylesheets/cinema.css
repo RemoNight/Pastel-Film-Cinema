@@ -40,13 +40,17 @@ body {
     border-bottom: 3px solid rgb(207, 87, 87);
 }
 
-#now-showing {
+#bkk {
     margin-left: 620px;
 
 }
 
-#coming-soon {
+#cen {
     margin-left: 60px;
+}
+
+#central {
+    display: none;
 }
 
 .card {

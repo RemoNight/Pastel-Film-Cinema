@@ -1,42 +1,43 @@
-var s = document.getElementById('movie-showing');
-var c = document.getElementById('movie-coming');
-var r = document.getElementById('movie-recommend');
-var ns = document.getElementById('now-showing');
-var cs = document.getElementById('coming-soon');
-var rc = document.getElementById('recommend');
+var b = document.getElementById('bangkok');
+var c = document.getElementById('central');
 
-function onClick_Showing() {
-    if (s.style.display === "none") {
-        ns.classList.add('heading-movie-1');
-        cs.classList.remove('heading-movie-1');
-        ns.style.color = "rgb(207, 87, 87)";
-        cs.style.color = "white"
-        s.style.display = "block"
+var bkk = document.getElementById('bkk');
+var cen = document.getElementById('cen');
+
+
+
+function onClick_Bangkok() {
+    if (b.style.display === "none") {
+        bkk.classList.add('heading-movie-1');
+        cen.classList.remove('heading-movie-1');
+        bkk.style.color = "rgb(207, 87, 87)";
+        cen.style.color = "white"
+        b.style.display = "block"
         c.style.display = "none"
     } else {
-        ns.classList.add('heading-movie-1');
-        cs.classList.remove('heading-movie-1');
-        ns.style.color = "rgb(207, 87, 87)";
-        cs.style.color = "white"
-        s.style.display = "block"
+        bkk.classList.add('heading-movie-1');
+        cen.classList.remove('heading-movie-1');
+        bkk.style.color = "rgb(207, 87, 87)";
+        cen.style.color = "white"
+        b.style.display = "block"
         c.style.display = "none"
     }
 }
 
-function onClick_Coming() {
+function onClick_Central() {
     if (c.style.display === "block") {
-        cs.classList.add('heading-movie-1');
-        ns.classList.remove('heading-movie-1');
-        cs.style.color = "rgb(207, 87, 87)";
-        ns.style.color = "white"
-        s.style.display = "none"
+        cen.classList.add('heading-movie-1');
+        bkk.classList.remove('heading-movie-1');
+        cen.style.color = "rgb(207, 87, 87)";
+        bkk.style.color = "white"
+        b.style.display = "none"
         c.style.display = "block"
     } else {
-        cs.classList.add('heading-movie-1');
-        ns.classList.remove('heading-movie-1');
-        cs.style.color = "rgb(207, 87, 87)";
-        ns.style.color = "white"
-        s.style.display = "none"
+        cen.classList.add('heading-movie-1');
+        bkk.classList.remove('heading-movie-1');
+        cen.style.color = "rgb(207, 87, 87)";
+        bkk.style.color = "white"
+        b.style.display = "none"
         c.style.display = "block"
     }
 }

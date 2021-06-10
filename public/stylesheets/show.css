@@ -271,7 +271,7 @@ iframe{
 
 .text-comment {
     width: 70%;
-    /* background-color: aqua; */
+    margin-left: 15px;
 }
 
 #dropdownMenuButton2 {

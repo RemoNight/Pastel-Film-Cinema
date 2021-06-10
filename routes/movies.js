@@ -22,6 +22,7 @@ var express     = require('express'),
     upload = multer({storage: storage, fileFilter: imageFilter}),// กำหนดการอัพโหลด ใช้งานผ่าน packet multer ยังไง
 
     Comment = require('../models/comment'),
+    Cinema  = require('../models/cinema'),
     Movie   = require('../models/movie'),
     User    = require('../models/user'),
     Liked   = require('../models/liked');
@@ -118,10 +119,28 @@ router.get("/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("movies/show.ejs", {movie: foundMovie});
+            res.render("movies/show.ejs", { movie: foundMovie });
         }
     });
 });
+
+
+// router.get("/:id", function(req, res){
+//     Movie.findById(req.params.id).populate('comments').exec(function(err, foundMovie){
+//         if(err){
+//             console.log(err);
+//         } else {
+//             Cinema.find({}, function(err, allCinemas){
+//                 if(err){
+//                     console.log(err);
+//                 } else {
+//                     res.render("movies/show.ejs", {movie: foundMovie , Cinemas: allCinemas});
+//                 } 
+//             });
+//         }
+//     });
+// });
+
 
 // edit comment
 

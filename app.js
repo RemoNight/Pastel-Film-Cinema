@@ -12,8 +12,11 @@ const   express         = require('express'),
         seedDB          =  require('./seeds');
 
 var commentRoutes       = require('./routes/comments'),
+    cinemaRoutes        = require('./routes/cinemas'),
     movieRoutes         = require('./routes/movies'),
     userRoutes          = require('./routes/user'),
+    showtimeRoutes      = require('./routes/showtime'),
+    bookingRoutes       = require('./routes/booking'),
     indexRoutes         = require('./routes/index');
 
 mongoose.connect('mongodb://localhost/projectV3');
@@ -44,16 +47,14 @@ app.use(function(req,res,next){
     next();
 });
 
-app.get('/cinema', function(req, res){
-    res.render('cinema/cinema.ejs');
-});
-
-
 
 
 app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/movie', movieRoutes);
+app.use('/cinema', cinemaRoutes);
+app.use('/booking', bookingRoutes);
+app.use('/showtime', showtimeRoutes);
 app.use('/movie/:id/comments', commentRoutes);
 
 app.listen(3000, function(){

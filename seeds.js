@@ -1,8 +1,8 @@
 var mongoose   = require('mongoose');
 var Comment    = require('./models/comment');
+var Cinema     = require('./models/cinema.js');
 var Liked      = require('./models/liked');
 var User       = require('./models/user');
-// const movie = require('./models/movie');
 var Movie      = require('./models/movie');
 
 
@@ -55,6 +55,28 @@ var data = [
 ];
 
 
+var cinemaData = [
+    {
+        name: 'Quartier CineArt',
+        area: 'bangkok',
+        image: 'https://www.emquartier.co.th/wp-content/uploads/2018/02/p5-600x221.jpg',
+        logo: 'https://propholic.com/wp-content/uploads/2015/03/cineart.jpg',
+        slogan: 'Premium cinema that deserve right to you.',
+        seat: [ [0, 0, 0, 0] , [0, 0, 0, 0] ],
+        time: [11, 14, 17, 20],
+    },
+    {
+        name: 'Paragon Cineplex',
+        area: 'central',
+        image: 'https://lh3.googleusercontent.com/proxy/McM3yUz02-RH_YMEBmitjt3KljHvuLAUB16_8FcbYbey1i-WgjJQV9WpLHoJfCzeCBFOEabDM1KPlTwQ6j2mHPtm2mvUmCSHTZO_s2Gqo7PpNA',
+        logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkSQC91KpNf1JF-uSMc1gM7Xftt9TwcV3wjWytUE5gUZun89Nq7bPwgkgremnl_9BxDlQ&usqp=CAU',
+        slogan: 'Premium cinema that deserve right to you.',
+        seat: [ [0, 0, 0, 0] , [0, 0, 0, 0] ],
+        time: [10, 13, 16, 19, 22],
+    },
+]
+
+
 
 function seedDB(){
     Movie.remove({}, function(err){
@@ -74,6 +96,23 @@ function seedDB(){
         });
     });
 
+    Cinema.remove({}, function(err){
+        if(err) {
+            console.log(err);
+        }
+        console.log("Remove Cinema completed");
+        cinemaData.forEach(function(seed){
+            Cinema.create(seed, function(err, cinema){
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log('Cinema data added');
+                    
+                }
+            });
+        });
+    });
+
     Liked.remove({}, function(err){
         if(err){
             console.log(err);
@@ -87,6 +126,7 @@ function seedDB(){
             });
         }
     });
+
 }
 
 module.exports = seedDB;

@@ -20,6 +20,7 @@ var express = require('express'),
     upload = multer({storage: storage, fileFilter: imageFilter}),
 
     User    = require('../models/user');
+    Booking = require('../models/booking');
 
     
 // Admin 
@@ -74,9 +75,29 @@ router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
     });
 });
 
+// Ticket
+
+// router.get('/profile/:id' , function (req, res) {
+//     User.findById(req.params.id).exec(function (err, foundUsers) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             Booking.find({'user.id': req.params.id}).exec(function(err, foundBooking){
+//                 if (err) {
+//                     console.log(err);
+//                 } else {
+//                     res.render('user/profile.ejs', { User: foundUsers, Booking: foundBooking });
+//                 }
+//             });
+//         }
+//     });
+// });
 
 
-// Profile
+
+
+
+// Profile: Show information & like list & ticket
 
 router.get('/profile/:id', isLoggedIn, function (req, res) {
     User.findById(req.params.id).exec(function (err, foundUsers) {
@@ -86,8 +107,14 @@ router.get('/profile/:id', isLoggedIn, function (req, res) {
             User.findById(req.params.id).populate('likes').exec(function(err, likedMovies){
                 if (err) {
                     console.log(err);
-                } else {
-                    res.render('index/profile.ejs', { User: foundUsers, movie: likedMovies });
+                } else { 
+                    Booking.find({'user.id': req.params.id}).exec(function(err, foundBooking){
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            res.render('index/profile.ejs', { User: foundUsers, movie: likedMovies, Booking: foundBooking });
+                        }
+                    });
                 }
             });
         }
