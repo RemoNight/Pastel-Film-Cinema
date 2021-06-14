@@ -68,6 +68,30 @@ router.post('/:id', middleware.isLoggedIn, function(req, res){
                     if( req.body.B4 == 'y') {
                         bookingSeat('B4', booking._id);
                     }
+                    if( req.body.C1 == 'y') {
+                        bookingSeat('C1', booking._id);
+                    }
+                    if( req.body.C2 == 'y') {
+                        bookingSeat('C2', booking._id);
+                    }
+                    if( req.body.C3 == 'y') {
+                        bookingSeat('C3', booking._id);
+                    }
+                    if( req.body.C4 == 'y') {
+                        bookingSeat('C4', booking._id);
+                    }
+                    if( req.body.D1 == 'y') {
+                        bookingSeat('D1', booking._id);
+                    }
+                    if( req.body.D2 == 'y') {
+                        bookingSeat('D2', booking._id);
+                    }
+                    if( req.body.D3 == 'y') {
+                        bookingSeat('D3', booking._id);
+                    }
+                    if( req.body.D4 == 'y') {
+                        bookingSeat('D4', booking._id);
+                    }
 
                     res.redirect('/user/profile/' + req.user._id );
                     

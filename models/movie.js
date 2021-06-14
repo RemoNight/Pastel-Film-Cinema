@@ -9,6 +9,7 @@ var movieSchema = new mongoose.Schema({
     actors: String,
     trailer: String,
     rating: Number,
+    location: String,
     type: String,
     author: {
         id: {

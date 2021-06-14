@@ -2,20 +2,41 @@ body {
     background: linear-gradient(to right, rgb(238, 174, 174) 0%, rgb(233, 203, 148) 100%);
 }
 
+.carousel-inner{
+    margin-bottom: 30px;
+}
+
+.head-h1{
+   
+    width: 60%;
+    margin: 0 auto;
+ 
+}
+
+.fa-map-marker-alt {
+    margin-top: -15px;
+}
+
 .h1 {
     font-weight: bold;
-    margin-top: 10px;
-    margin-left: 650px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
     color: rgb(207, 87, 87);
     text-shadow: 2px 2px 2px white;
 }
 
-.line-heading-movie {
-    width: 1105px;
+.h1-inner{
+  
+    text-align: center;
+}
+
+.line-heading-movie-1 {
+    width: 100%;
     height: 20px;
-    padding-left: 100px;
-    margin-top: -1px;
-    margin-left: 180px;
+   
+    margin-top: -19px;
+    
     background:whitesmoke;
     font-size: 0;
     border: 1px solid white;
@@ -40,10 +61,7 @@ body {
     border-bottom: 3px solid rgb(207, 87, 87);
 }
 
-#bkk {
-    margin-left: 620px;
 
-}
 
 #cen {
     margin-left: 60px;
@@ -88,4 +106,16 @@ body {
 
 .card-body, .card-text{
     margin-left: 40px;
+}
+
+.detail:active, .detail:hover .hide,  .detail:hover .card-body{
+
+    display: block;
+    color: rgb(207, 87, 87);
+}
+
+.hide{
+    display: none;
+    padding: 20px;
+    border-radius: 2px 2px 2px 2px ;
 }

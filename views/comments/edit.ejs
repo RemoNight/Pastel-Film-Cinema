@@ -13,21 +13,23 @@
                 </div>
 
                 <div class="col">
-                    <p class="name-movie"><%= movie.name %></p>
-                    <p class="p-detail"><img
-                        src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-time.svg"
-                        class="bshn-icon-desc">
-                        <%= movie.time %>
+                    <h4 class="name-movie"><%= movie.name %></h4>
+                    <p class="p-detail">
+                        <i class="far fa-clock bshn-icon-desc"></i>
+                        <span class="p-detail"><%= movie.time %></span>
                     </p>
-                    <p class="p-detail"><img
-                        src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-tag.svg"
-                        class="bshn-icon-desc">
-                        <%= movie.genre %>
+                    <p class="p-detail">
+                        <i class="fa fa-tag bshn-icon-desc"></i>
+                        <span class="p-detail"><%= movie.genre %></span>
                     </p>
-                    <p class="p-detail"><img
-                        src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-date.svg"
-                        class="bshn-icon-desc">
-                        <%= movie.date %>
+                    <p class="p-detail">
+                        <i class="far fa-calendar-alt bshn-icon-desc"></i>
+                        <span class="p-detail"><%= movie.date %></span>
+                        
+                    </p>
+                    <p>
+                        <i class="fa fa-star bshn-icon-desc"></i>
+                        <span class="p-detail">Rating: <%= movie.rating %></span>
                     </p>
                     <p class="p-detail">ACTORS: <%= movie.actors %></p> 
                     <div class="fav-and-buy">
@@ -78,7 +80,7 @@
     <!---------------------------- Comment part ---------------------------->
 
     <div class="about-review">
-        <h1>Rating & Review</h1>
+        <h1>Review <i class="fas fa-comments"></i></h1>
     </div>
 
     <% movie.comments.forEach(function(comment){ %>

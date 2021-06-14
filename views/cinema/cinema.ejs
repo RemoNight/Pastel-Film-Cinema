@@ -1,25 +1,30 @@
-<%- include('../partials/header1.ejs') %>
+<%- include('../partials/header2.ejs') %>
 
 
-<link rel="stylesheet" href="stylesheets/cinema.css">
+<link rel="stylesheet" href="/stylesheets/cinema.css">
 
 
     <script src="cinema.js" defer></script>
+    <script src="../javascript/cinema.js" defer></script>
+    
+
     <div class="carousel-inner">
         <div class="carousel-item active">
           <img src="http://www.engtest.net/UserFiles/Image/25782572575785785757575/cinema-Maroc.jpg" class="d-block w-100" alt="NMovie">
           <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
+            <h5>WELCOME TO PASTEL FILM</h5>
+            <p>We always give you a brilliant screenplay.</p>
           </div>
         </div>
     </div>
 
-    <div>
-        <h1 class="h1">LOCATION</h1>
-        <button onclick="onClick_Bangkok()" class="heading-movie" id="bkk">BANGKOK</button>
-        <button onclick="onClick_Central()" class="heading-movie" id="cen">CENTRAL</button>
-        <hr class="line-heading-movie">
+    <div class="head-h1">
+        <h1 class="h1">LOCATION <i class="fas fa-map-marker-alt"></i></h1>
+        <p class="h1-inner">
+            <button onclick="onClick_Bangkok()" class="heading-movie" id="bkk">BANGKOK</button>
+            <button onclick="onClick_Central()" class="heading-movie" id="cen">NORTH</button>
+            <hr class="line-heading-movie-1">
+        </p>
     </div>
 
 
@@ -35,8 +40,9 @@
                                 <!-- <img src="<%= cinema.image %>" width="100%" height="250px" style="object-fit: cover;"> -->
                                 <div class="card " style="width: 16rem;">
                                     <div class="card-body">
+                                        <img src="<%= cinema.logo %>" style="width: 7rem; height: 6rem; padding-bottom: 5px; margin-left: 25px;">
                                         <h5 class="card-title"><%= cinema.name %></h5>
-                                        <p class="card-text">Tel. 1349</p>
+                                        <p class="card-text"><%= cinema.tel %></p>
                                     </div>
                                 </div>
                             </a>
@@ -59,8 +65,9 @@
                                 <!-- <img src="<%= cinema.image %>" width="100%" height="250px" style="object-fit: cover;"> -->
                                 <div class="card " style="width: 16rem;">
                                     <div class="card-body">
+                                        <img src="<%= cinema.logo %>" style="width: 10rem; height: 5rem; padding-bottom: 10px;">
                                         <h5 class="card-title"><%= cinema.name %></h5>
-                                        <p class="card-text">Tel. 1349</p>
+                                        <p class="card-text"><%= cinema.tel %></p>
                                     </div>
                                 </div>
                             </a>

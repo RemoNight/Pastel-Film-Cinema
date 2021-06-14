@@ -75,29 +75,9 @@ router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
     });
 });
 
-// Ticket
-
-// router.get('/profile/:id' , function (req, res) {
-//     User.findById(req.params.id).exec(function (err, foundUsers) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             Booking.find({'user.id': req.params.id}).exec(function(err, foundBooking){
-//                 if (err) {
-//                     console.log(err);
-//                 } else {
-//                     res.render('user/profile.ejs', { User: foundUsers, Booking: foundBooking });
-//                 }
-//             });
-//         }
-//     });
-// });
 
 
-
-
-
-// Profile: Show information & like list & ticket
+// Profile: Show information & Like list & Ticket
 
 router.get('/profile/:id', isLoggedIn, function (req, res) {
     User.findById(req.params.id).exec(function (err, foundUsers) {

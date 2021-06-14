@@ -2,120 +2,121 @@
 
     <link rel="stylesheet" href="/stylesheets/profile.css">
 
-    <script src="/profile.js" defer></script>
-    <div class="container">
-        <div class="box-personal">
-            <div class="bp-left">
-                <div class="bp-name">
-                    <h3 class="bp-name-h3">WELCOME</h3>
-                    <h4 class="bp-name-h4">
-                        <%= currentUser.firstname %>
-                            <%= currentUser.lastname %>
-                    </h4>
-                </div>
-                <div class="bp-right">
-                </div>
+
+    <script src="/javascript/cinema.js" defer></script>
+    
+        <div class="welcome">
+            <div class="h1-wel">
+                <h4 >WELCOME </h4>
+                <h2 style="text-transform: capitalize;"><%= currentUser.firstname %> &nbsp;<%= currentUser.lastname %>! <i class="far fa-handshake"></i></h2>
             </div>
-            <div class="box-personal-tab">
-                <div class="bn-tab">
-                    <ul id="personal-tab" class="nav nav-pills mb-4" role="tablist">
-                        <li id="personal-2-tab" class="nav-item" role="tab">
-                            <a href="#" class="MYPROFILE">MY PROFILE</a>
-                        </li>
+        </div>
+
+
+        <div class="user" style=" width: 50%; margin: 0 auto; margin-top: 70px;">
+
+            <div class="navbar profile">
+                <div style="display: flex;">
+                    <h1 class="navbar-brand" style="display: flex; font-weight: bold; color: rgb(207, 87, 87); text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67)"> MY PROFILE </h1>
+                    <h2 class="far fa-address-card" style="color: rgb(207, 87, 87);"></h2>
+                </div>
+                
+
+                <div  class="dropdown setting">
+                    <button class="dropdown-toggle btn-sm" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" style="border-radius: 50px; margin-right: 20px; color: white; background: rgb(207, 87, 87);"><i class="fas fa-cog"></i></button>
+                    <ul class="tool dropdown-menu menu-1">
+
+                        <li><a role="button" data-bs-toggle="modal" data-bs-target="#editModal" class="dropdown-item"> EDIT PICTURE &nbsp;<i class="far fa-edit"></i></a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a href="/logout" class="dropdown-item">LOG OUT</a></li>
                     </ul>
                 </div>
-                <div id="pills-tabContent" class="tab-content">
-                    <div class="tap-pane fade show active" role="tabpanel">
-                        <div class="my_profile">
-                            <div class="my_profile_img">
-                                <img src="<%= currentUser.image %>" class="img-profile">
-                            </div>
-                            <div class="my_profile_data">
-                                <div class="my_profile_row">
-                                    <div class="my_profile_label">Firstname</div>
-                                    <div class="my_profile_value">
-                                        <%= currentUser.firstname %>
-                                    </div>
-                                </div>
-                                <div class="my_profile_row">
-                                    <div class="my_profile_label">Lastname</div>
-                                    <div class="my_profile_value">
-                                        <%= currentUser.lastname %>
-                                    </div>
-                                </div>
-                                <div class="my_profile_row">
-                                    <div class="my_profile_label">Email</div>
-                                    <div class="my_profile_value">
-                                        <%= currentUser.email %>
-                                    </div>
-                                </div>
-                            </div>
+
+                <div class="container-fluid" style=" width: 100%;">
+                    <div class="row" style="display: flex;">
+                        <img src="<%= currentUser.image %>" style="width: 9rem; height: 12rem;" class="col">
+                        
+                        <div class="col" style=" width: 100%;">
+                            <p class="p-data">User: &nbsp; <%= currentUser.username %></p>
+                            <p class="p-data">Firstname: &nbsp; <%= currentUser.firstname %></p>
+                            <p class="p-data">Lastname: &nbsp; <%= currentUser.lastname %></p>
+                            <p style="font-weight: bold; color: rgb(207, 87, 87);">E-mail: &nbsp;&nbsp; <%= currentUser.email %></p>
                         </div>
-                        <form action="/user/profile/<%= currentUser._id %>" method="POST" enctype="multipart/form-data">
-                            <input type="file" class="img-profile" name='image' accept="image/*"> 
-                            <button type="submit">Save</button>
-                        </form>
-                        <hr class="line-profile">
-                    </div>
+                    </div>    
                 </div>
             </div>
-        </div>
-        <div>
-            <button onclick="onClick_Showing()" class="heading-movie" id="now-showing">SHOW HISTORY</button>
-            <button onclick="onClick_Coming()" class="heading-movie" id="coming-soon">SHOW LIKE LIST</button>
+
         </div>
 
-        <div id="movie-showing">
+        <div class="head-h1">
+            <p class="h1-inner">
+                <button onclick="onClick_Bangkok()" class="heading-movie" id="bkk">SHOW HISTORY</button>
+                <button onclick="onClick_Central()" class="heading-movie" id="cen">SHOW LIKE LIST</button>
+                <hr class="line-heading-movie-1">
+            </p>
+        </div>
 
-            <!-- <div class="album py-5"> -->
-                <!-- <div class="container"> -->
-                    <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3"> -->
-                        <% if (currentUser) { %>
-                            <div class="container-fluid row mt-3"  style="height: 300px;">
-                                <% Booking.forEach(function(thisBooking){ %>
-                                    <div class="row col-4 mx-3 card card-cover text-white bg-dark rounded-5 shadow-lg h-100">
-                                        <div class="col-6">
-                                            <img src="<%= thisBooking.moviesImage %>" height="300px" overflow: hidden;>
+
+        <div id="bangkok">
+
+            <% if (currentUser) { %>
+                <% Booking.forEach(function(thisBooking){ %>
+                    <!-- test -->
+                    <div style="width: 80%; margin: 0 auto; margin-top: -40px; padding-left: 150px;">
+                        <section class="container container-1"  >
+                            <div class="row">
+                                <article class="card fl-left card-dec card-1">
+                                    <section class="date">
+                                        <time datetime="23th feb">
+                                        <span><i class="fa fa-calendar"></i></span><span><%= thisBooking.date %></span>
+                                        </time>
+                                    </section>
+                                    <section class="card-cont">
+                                        <small>Theater: <%= thisBooking.theater %></small>
+                                        <h3 style="text-decoration: none;"><%= thisBooking.moviesName %></h3>
+    
+                                        <div class="even-date">
+                                            <i class="fas fa-ticket-alt"></i>
+                                            <time>
+                                                <span>&nbsp;SEATS: <%= thisBooking.seats %></span>
+                                                <span>&nbsp;SHOWTIME:  <%= thisBooking.time %></span>
+                                            </time>
                                         </div>
-                                        <div class="col-6" style="position: relative; height: 300px; padding-top: 50px;">
-                                            <h3><%= thisBooking.moviesName %></h3>
-                                            <div class="container-fluid" style="height: 10px;"></div>
-                                            <h5>Seat: &emsp;&emsp;&nbsp;<%= thisBooking.seats %></h5>
-                                            <h5>Date: &emsp;&emsp;<%= thisBooking.date %></h5>
-                                            <h5>Time: &emsp;&emsp;<%= thisBooking.time %></h5>
-                                            <h5>Theater: &ensp;&nbsp;<%= thisBooking.theater %></h5>
-                                            <span class="big-dot" style="position: absolute; right: 0; top: 10px; background-color: gray;"></span>
-                                            <img src="<%= thisBooking.cinemaImage %>" style="width: 100px; position: absolute; right: 0; bottom: 10px;">
+    
+                                        <div class="even-info">
+                                            <i class="fa fa-map-marker"></i>
+                                            <p>
+                                                <%= thisBooking.cinemaName %>
+                                            </p>
                                         </div>
-                                    </div>   
-                                <% }); %>
+    
+                                        <!-- <a role="button"><img src="<%= thisBooking.cinemaImage %>" width="70px" height="50px"></a> -->
+                                    </section>
+                                </article>
                             </div>
-                        <% } %>
-                    <!-- </div> -->
-                <!-- </div> -->
-            <!-- </div> -->
+                        </section>
+                    </div>
+                <% }); %>
+            <% } %>
         </div>
 
 
-        <div id="movie-coming">
+        <div id="central">
             <div class="album py-5">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                <div class="container" style=" width: 70%; text-align: center;">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="width: 80%; text-align: center; margin: 0 auto;">
                         <% if ( movie.likes == 0 ) {  %>
-                            &ensp; <p class="dont-like"> You don't have a movie in your favorite. Let's add a movie to your favorite! </p> 
+                            &ensp; <p class="dont-like"> You don't have a movie in your favorite. <br> Let's add a movie to your favorite! </p> 
                         <% } else {  %>
                             <% movie.likes.forEach(function(liked){ %>
                                 <div class="col">
-                                    <a href="/movie/<%= liked.movies.id %>" class="detail">
-                                        <div class="card shadow-sm" style="width: 16rem;">
-                                            <img src="<%= liked.movies.image %>" class="card-img-top">
+                                    <a href="/movie/<%= liked.movies.id %>" class="detail" style="text-decoration: none; color: white; text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);">
+                                        <div class="card" style="width: 14.3rem; background-color: transparent; border: 0;">
+                                            <img src="<%= liked.movies.image %>" class="card-img-top" style="height: 21rem;">
                                             <div class="card-body">
                                                 <h5 class="card-title">
                                                     <%= liked.movies.name %>
                                                 </h5>
-                                                <!-- <p class="card-text">
-                                                    <%= liked.date %>
-                                                </p> -->
                                             </div>
                                         </div>
                                     </a>
@@ -128,5 +129,29 @@
         </div>
 
 
+
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" data-bs-backdrop="static" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">SELECT PROFILE PICTURE &nbsp;<i class="far fa-images"></i></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/user/profile/<%= currentUser._id %>" method="POST" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <label  class="form-label">Choose your Picture</label>
+                            <input type="file" class="img-profile" name='image' accept="image/*">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-1 btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-1 btn-primary">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    
 
         <%- include('../partials/footer.ejs') %>

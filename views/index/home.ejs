@@ -1,14 +1,11 @@
 <%- include('../partials/header1.ejs') %>
-<!-- <h2>Landing Page!</h2>
-<p>Welcome to uCollection</p>
 
-<a href='/collection'> View All collections</a> -->
 
 
 <link rel="stylesheet" href="stylesheets/home.css">
 
 
-<script src="home.js" defer></script>
+<script src="../javascript/home.js" defer></script>
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -42,28 +39,9 @@
     </button>
 </div>
 
-<div class="select-cinema-and-movie" style="margin-top: -35px;">
-    <form action="" method="POST" class="select-inner">
-        <select name="cinema" class="select">
-            <option value="Cinema">Cinema</option>
-            <option value="Cinema-1">Cinema 1</option>
-            <option value="Cinema-2">Cinema 2</option>
-            <option value="Cinema-3">Cinema 3</option>
-            <option value="Cinema-4">Cinema 4</option>
-            <option value="Cinema-5">Cinema 5</option>
-        </select>
-        <select name="movie" class="select">
-            <option value="Movie">Movie</option>
-            <% showing.forEach(function(movie){  %>
-                <option value="Movie"><%= movie.name %></option>
-            <% }); %>
-        </select>
-        <input type="submit" class="show-time" value="SHOW TIME">
-    </form>
-</div><br><br>
 
 <div class="header-movie-home">
-    <p class="home-movie">Movie</p>
+    <h1 class="home-movie">MOVIES <i class="fas fa-film"></i></h1>
     <button onclick="onClick_Recommend()" class="heading-movie" id="recommend">RECOMMEND</button>
     <button onclick="onClick_Showing()" class="heading-movie" id="now-showing">NOW SHOWING</button>
     <button onclick="onClick_Coming()" class="heading-movie" id="coming-soon">COMING SOON</button>
@@ -110,6 +88,30 @@
                                 <h5 class="card-title"><%= movie.name %></h5>
                                 <p class="card-text"><%= movie.date %></p>
                             </div>
+
+                            <div class="hide" style="background-color:  rgba(0, 0, 0, 0.7);position: absolute;color:rgb(207, 87, 87) ;width:15.9rem;height: 23rem;"> 
+                                <p class="name-movie"><%= movie.name %></p>
+                                <p class="p-detail"><img
+                                    src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-time.svg"
+                                    class="bshn-icon-desc">
+                                    <%= movie.time %>
+                                </p>
+
+                                <p class="p-detail"><img
+                                    src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-tag.svg"
+                                    class="bshn-icon-desc">
+                                    <%= movie.genre %>
+                                </p>
+
+                                <p class="p-detail"><img
+                                    src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-date.svg"
+                                    class="bshn-icon-desc">
+                                    <%= movie.date %>
+                                </p>
+
+                                <p class="p-detail">ACTORS: <%= movie.actors %></p>
+                                
+                            </div>
                         </div>
                     </a>
                 </div>
@@ -134,8 +136,36 @@
                                 <h5 class="card-title"><%= movie.name %></h5>
                                 <p class="card-text"><%= movie.date %></p>
                             </div>
+
+                            <div class="hide" style="background-color:  rgba(0, 0, 0, 0.7);position: absolute;color:rgb(207, 87, 87) ;width:15.9rem;height: 23rem;"> 
+                                <p class="name-movie"><%= movie.name %></p>
+                                <p class="p-detail"><img
+                                    src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-time.svg"
+                                    class="bshn-icon-desc">
+                                    <%= movie.time %>
+                                </p>
+
+                                <p class="p-detail"><img
+                                    src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-tag.svg"
+                                    class="bshn-icon-desc">
+                                    <%= movie.genre %>
+                                </p>
+
+                                <p class="p-detail"><img
+                                    src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-date.svg"
+                                    class="bshn-icon-desc">
+                                    <%= movie.date %>
+                                </p>
+
+                                <p class="p-detail">ACTORS: <%= movie.actors %></p>
+                                
+                            </div>
                         </div>
+
+                        
                     </a>
+
+                   
                 </div>
                 <% }); %>
             </div>

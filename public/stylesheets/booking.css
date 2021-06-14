@@ -1,0 +1,89 @@
+body {
+    background: linear-gradient(to right, rgb(238, 174, 174) 0%, rgb(233, 203, 148) 100%);
+}
+
+.info-movie {
+    background-color: rgba(253, 253, 253, 0.2);
+    display: flex;
+    border-radius: 10px;
+    border: 3px solid white;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+
+.de-h1 {
+    font-weight: bold;
+    color: rgb(207, 87, 87);
+    text-shadow: 2px 2px 2px white;
+}
+
+.detail-movie {
+    padding-left: 30px;
+}
+
+.sum-booking {
+    background-color: rgba(253, 253, 253, 0.2);
+    font-weight: bolder;
+    text-align: center;
+    color: rgb(207, 87, 87);
+    text-shadow: 2px 2px 2px white;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 3px solid white;
+    padding-bottom: 10px;
+}
+
+.sum-h3 {
+    color: white;
+    text-shadow: 1.5px 1.5px 2px rgb(77, 77, 77);
+}
+
+.de-p {
+    font-weight: bold;
+    color: white;
+    text-shadow: 1.5px 1.5px 2px rgb(77, 77, 77);
+}
+
+.seat-submit {
+    border-radius: 6px;
+    color: white;
+    border: 1px solid rgb(207, 87, 87);
+    background: rgb(207, 87, 87);
+    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
+    box-shadow: 2px 2px 2px rgb(68, 67, 67);
+    font-weight: bold;
+}
+
+.seat-submit:hover {
+    border-radius: 6px;
+    color: white;
+    border: 1px solid rgb(184, 61, 61);
+    background: rgb(184, 61, 61);
+    text-shadow: 1.5px 1.5px 2px rgb(68, 67, 67);
+    box-shadow: 2px 2px 2px rgb(68, 67, 67);
+    font-weight: bold;
+}
+
+.btn-1 {
+    background-color: rgb(207, 87, 87);
+    color: white;
+    border: none;
+    box-shadow: none;
+   
+}
+
+.btn-1:focus {
+    background-color: rgb(207, 87, 87);
+    color: white;
+    border: none;
+    box-shadow: none;
+}
+
+.btn-1:hover {
+    background-color: rgb(184, 61, 61);
+    color: white;
+    border: none;
+    box-shadow: none;
+}

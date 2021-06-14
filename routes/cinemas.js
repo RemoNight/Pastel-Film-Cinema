@@ -37,7 +37,38 @@ router.get('/', function(req, res){
                 if(err) {
                     console.log(err);
                 } else {
-                     res.render('cinema/cinema.ejs', {Bangkok: bangkokCinemas, Central: centralCinemas});
+                    Movie.find({}, function(err, allMovies){
+                        if(err) {
+                            console.log(err);
+                        } else {
+                             res.render('cinema/cinema.ejs', {Bangkok: bangkokCinemas, Central: centralCinemas, movie: allMovies});
+                        }
+                    });
+                }
+            });
+        }
+    });
+});
+
+
+// search movie
+
+router.post('/search-cinema',function(req,res){
+    console.log("Trying to search cinema... " + req.body.search);
+    var name = req.body.search;
+    res.redirect('/cinema/search-cinema/' + name);
+});
+
+router.get('/search-cinema/:name', function(req,res){
+    Cinema.find({ name: new RegExp(req.params.name, 'i')}, function(err, bangkokfoundCinema){
+        if(err){
+            console.log(err);
+        } else {
+            Cinema.find({name: new RegExp(req.params.name, 'i')}, function(err, centralfoundCinema){
+                if(err){
+                    console.log(err);
+                } else {
+                    res.render('cinema/cinema.ejs', { Bangkok: bangkokfoundCinema, Central: centralfoundCinema, sort: "All"});
                 }
             });
         }
@@ -106,6 +137,7 @@ router.delete('/:id', function(req, res){
         }
     })
 });
+
 
 
 //  Show movies that are available in the cinema

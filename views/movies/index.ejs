@@ -1,28 +1,31 @@
-<%- include('../partials/header2.ejs') %>
+<%- include('../partials/header1.ejs') %>
 
     <link rel="stylesheet" href="/stylesheets/movie.css">
 
 
-    <script src="/movie.js" defer></script>
+
+    <script src="../javascript/movie.js" defer></script>
+    
     <div class="header-movie-home">
-        <p class="home-movie">Movie</p>
+        <h1 class="home-movie" style="margin-top: 20px;">MOVIES <i class="fas fa-film"></i></h1>
         <p class="space-button">
             <button onclick="onClick_Showing()" class="heading-movie" id="now-showing">NOW SHOWING</button>
             <button onclick="onClick_Coming()" class="heading-movie" id="coming-soon">COMING SOON</button>
+            <hr class="line-heading-movie-1">
         </p>
-        <hr class="line-heading-movie">
+       
     </div>
 
 
 
     <div id="movie-showing">
-        <div class="dropdown" style="background-color: aqua; padding-left: 100px;">
+        <div class="dropdown-1" >
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 <% if ( sort == 'All' ) {  %>
                     &ensp; Genre
                 <% } else {  %>
-                    &ensp; Sort by : <%= sort %>
+                    &ensp; Genre : <%= sort %>
                 <% } %>
             </a>
 
@@ -30,17 +33,13 @@
                 <li><a class="dropdown-item" href="/movie">All Movies</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-showing/Action">Action</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-showing/Adventure">Adventure</a></li>
+                <li><a class="dropdown-item" href="/movie/genre-showing/Comedy">Comedy</a></li>
+                <li><a class="dropdown-item" href="/movie/genre-showing/Crime">Crime</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-showing/Drama">Drama</a></li>
-                <li><a class="dropdown-item" href="/movie/genre-showing/Horror">Horror</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-showing/Fantasy">Fantasy</a></li>
+                <li><a class="dropdown-item" href="/movie/genre-showing/Horror">Horror</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-showing/Sci-fi">Sci-Fi</a></li>
             </ul>
-
-            
-            <!-- <% if( !currentUser ) { %> 
-            <% } else if( currentUser.status === 'admin' || currentUser.status === 'boss' ) { %>
-                <a href="/movie/new"><button type="button" class="btn btn-outline" style="color: white; margin: 0 auto; margin-top: -3%; margin-left: 2%;">Add new movies</button></a>
-            <% } %> -->
 
         </div>
 
@@ -60,8 +59,34 @@
                                             <%= movie.date %>
                                         </p>
                                     </div>
+
+                                    <div class="hide" style="background-color:  rgba(0, 0, 0, 0.85);position: absolute;color:rgb(207, 87, 87) ;width:15.9rem;height: 23rem;"> 
+                                        <p class="name-movie"><%= movie.name %></p>
+                                        <p class="p-detail"><img
+                                            src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-time.svg"
+                                            class="bshn-icon-desc">
+                                            <%= movie.time %>
+                                        </p>
+        
+                                        <p class="p-detail"><img
+                                            src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-tag.svg"
+                                            class="bshn-icon-desc">
+                                            <%= movie.genre %>
+                                        </p>
+        
+                                        <p class="p-detail"><img
+                                            src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-date.svg"
+                                            class="bshn-icon-desc">
+                                            <%= movie.date %>
+                                        </p>
+        
+                                        <p class="p-detail">ACTORS: <%= movie.actors %></p>
+                                        
+                                    </div>
+                                    
                                 </div>
                             </a>
+                            
                         </div>
                     <% }); %>
                 </div>
@@ -74,20 +99,8 @@
 
 
     <div id="movie-coming">
-        <!-- <div class="select-months-years">
-            <form action="" method="post" class="select-inner-next">
-                <select name="cinema" class="select-next">
-                    <option value="All">All</option>
-                    <option value="January">January 2021</option>
-                    <option value="February">February 2021</option>
-                    <option value="March">March 2021</option>
-                    <option value="Apirl">Apirl 2021</option>
-                    <option value="May">May 2021</option>
-                </select>
-            </form>
-        </div> -->
 
-        <div class="dropdown" style="background-color: aqua;">
+        <div class="dropdown-1" >
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 <% if ( sort == 'All' ) {  %>
@@ -101,17 +114,17 @@
                 <li><a class="dropdown-item" href="/movie">All Movies</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-coming/Action">Action</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-coming/Adventure">Adventure</a></li>
+                <li><a class="dropdown-item" href="/movie/genre-coming/Comedy">Comedy</a></li>
+                <li><a class="dropdown-item" href="/movie/genre-coming/Crime">Crime</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-coming/Drama">Drama</a></li>
-                <li><a class="dropdown-item" href="/movie/genre-coming/Horror">Horror</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-coming/Fantasy">Fantasy</a></li>
+                <li><a class="dropdown-item" href="/movie/genre-coming/Horror">Horror</a></li>
                 <li><a class="dropdown-item" href="/movie/genre-coming/Sci-fi">Sci-Fi</a></li>
             </ul>
 
-            <!-- <% if( currentUser && currentUser.isAdmin ) { %>
-                <a href="/movie/new"><button type="button" class="btn btn-outline" style="color: white; margin: 0 auto; margin-top: -3%; margin-left: 2%;">Add new movies</button></a>
-            <% } %> -->
-
         </div>
+
+        
         
         <div class="album py-5">
             <div class="container">
@@ -129,6 +142,31 @@
                                             <%= movie.date %>
                                         </p>
                                     </div>
+
+                                    <div class="hide" style="background-color:  rgba(0, 0, 0, 0.7);position: absolute;color:rgb(207, 87, 87) ;width:15.9rem;height: 23rem;"> 
+                                        <p class="name-movie"><%= movie.name %></p>
+                                        <p class="p-detail"><img
+                                            src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-time.svg"
+                                            class="bshn-icon-desc">
+                                            <%= movie.time %>
+                                        </p>
+        
+                                        <p class="p-detail"><img
+                                            src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-tag.svg"
+                                            class="bshn-icon-desc">
+                                            <%= movie.genre %>
+                                        </p>
+        
+                                        <p class="p-detail"><img
+                                            src="https://www.majorcineplex.com/public/desktop_new_assets/img/icon-date.svg"
+                                            class="bshn-icon-desc">
+                                            <%= movie.date %>
+                                        </p>
+        
+                                        <p class="p-detail">ACTORS: <%= movie.actors %></p>
+                                        
+                                    </div>
+                                    
                                 </div>
                             </a>
                         </div>

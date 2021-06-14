@@ -14,6 +14,15 @@
 <% var Time4 = new Date(Time3) %>
 <% Time4.setDate(Time4.getDate() + 1) %>
 
+<% var Time5 = new Date(Time4) %>
+<% Time5.setDate(Time5.getDate() + 1) %>
+
+<% var Time6 = new Date(Time5) %>
+<% Time6.setDate(Time6.getDate() + 1) %>
+
+<% var Time7 = new Date(Time6) %>
+<% Time7.setDate(Time7.getDate() + 1) %>
+
 <% var Day1 = Time1.getDay(), Month1 = Time1.getMonth(), Date1 = Time1.getDate(); %>
 <% var D1 = weekday[Day1] + ' ' + Date1 + ' ' + month[Month1]; %>
 
@@ -26,168 +35,429 @@
 <% var Day4 = Time4.getDay(), Month4 = Time4.getMonth(), Date4 = Time4.getDate(); %>
 <% var D4 = weekday[Day4] + ' ' + Date4 + ' ' + month[Month4]; %>
 
+<% var Day5 = Time5.getDay(), Month5 = Time5.getMonth(), Date5 = Time5.getDate(); %>
+<% var D5 = weekday[Day5] + ' ' + Date5 + ' ' + month[Month5]; %>
 
-<!-- Banner -->
-<div class="container-fluid px-3" style="height: 75px; background-color: rgb(0, 0, 0);">
-    <div class="row">
-        <h5 class="col pt-4" style="color: white; text-transform: uppercase;">
-            &emsp;
-            <span class="dot" style="background-color: rgb(255, 0, 0); margin-bottom: 1px;"></span>
-            Current Showtime
-        </h5>
-        <div class="col-3 pt-2">
-            <img src="<%= Cinemas.logo %>" width="100px" style="float: right;">
+<% var Day6 = Time6.getDay(), Month6 = Time6.getMonth(), Date6 = Time6.getDate(); %>
+<% var D6 = weekday[Day6] + ' ' + Date6 + ' ' + month[Month6]; %>
+
+<% var Day7 = Time7.getDay(), Month7 = Time7.getMonth(), Date7 = Time7.getDate(); %>
+<% var D7 = weekday[Day7] + ' ' + Date7 + ' ' + month[Month7]; %>
+
+
+<link rel="stylesheet" href="/stylesheets/showtime.css">
+
+<div class="album py-5">
+    <div class="container" >
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <div class="col col-1">
+                <img src="<%= Movies.image %>" class="img-logo" style="width: 16rem;">
+            </div>
+
+            <div class="col">
+                <p class="name-movie"><%= Movies.name %></p>
+                    <p class="p-detail">
+                        <i class="far fa-clock bshn-icon-desc"></i>
+                        <span class="p-detail"><%= Movies.time %></span>
+                    </p>
+                    <p class="p-detail">
+                        <i class="fa fa-tag bshn-icon-desc"></i>
+                        <span class="p-detail"><%= Movies.genre %></span>
+                    </p>
+                    <p class="p-detail">
+                        <i class="far fa-calendar-alt bshn-icon-desc"></i>
+                        <span class="p-detail"><%= Movies.date %></span>
+                        
+                    </p>
+                    <p>
+                        <i class="fa fa-star bshn-icon-desc"></i>
+                        <span class="p-detail">Rating: <%= Movies.rating %></span>
+                    </p>
+                <p class="p-detail">ACTORS: <%= Movies.actors %></p> 
+                <div class="fav-and-buy">
+                    <% if(!currentUser) { %>
+                        <form action="/login" method="POST">
+                            <button type="submit" class="fav-none-login"><i class="far fa-heart" id="like"></i></button>
+                        </form>
+                    <% } else { %>
+                            <span class="container-fluid mt-3" style="height: 50px;">
+                                <!-- function for check that user like or not -->
+                                    <% var match=0; var lid='' ; %>
+                                    <% currentUser.likes.forEach(function(liked){ if ( liked.movies.id==Movies.id ) {
+                                        match=1; lid=liked._id; } }); %>
+                                    <% if( match==1 ) { %>
+                                        <form action="/movie/<%= lid %>/unlike" method="POST">
+                                            <button type="submit" class="fav"><i class="fa fa-heart" id="unlike"></i></button>
+                                        </form>
+                                    <% } else { %>
+                                        <form action="/movie/<%= Movies._id %>/like" method="POST">
+                                            <button type="submit" class="fav"><i class="far fa-heart" id="like"></i></button>
+                                        </form>
+                                    <% } %>
+                            </span>
+                    <% } %>
+                    <span class="buy">
+                        <% if( currentUser && currentUser.status === 'admin' || currentUser && currentUser.status === 'boss' ){ %>
+                            <a href="/movie/<%= Movies._id %>/edit"><button class="btn btn-primary btn-edit">EDIT &nbsp;<i class="far fa-edit"></i></button></a>
+                            <form action="/movie/<%= Movies._id %>?_method=DELETE" method="POST">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    DELETE &nbsp;<i class="fa fa-trash"></i>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" data-bs-backdrop="static" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">DELETE MOVIE</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Do you want to delete this movie ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-primary">Confirm</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        <% } else { %>
+                            <a href="/movie/<%= Movies.id %>/showtime"><button class="btn btn-buy" >BUY TICKET!</button></a>
+                        <% } %>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col">
+                <iframe class="iframe-trailer" src="<%= Movies.trailer %>" allowfullscreen></iframe>
+            </div>
+
         </div>
     </div>
 </div>
 
-<!-- ------- Theater 1 ------- -->
-<form action="/showtime/<%= Cinemas.id %>/<%= Movies.id %>" method="POST">
-    <div class="container-fluid px-1 pt-3" style="height: 70px; background-color: rgb(26, 26, 26);">
-        <h4 style="color: white;">
-            &emsp;
-            <select class="btn btn-secondary" onchange="check(this.value)" id="selectDay" name="showtime[date]" id="day" required style="font-size: 20px;">
-                <option name="showtime[date]" value="<%= D1 %>"><%= D1 %></option>
-                <option name="showtime[date]" value="<%= D2 %>"><%= D2 %></option>
-                <option name="showtime[date]" value="<%= D3 %>"><%= D3 %></option>
-                <option name="showtime[date]" value="<%= D4 %>"><%= D4 %></option>
-            </select>
-            &emsp;
-        </h4>
-    </div>
+    <div >
+        <div >
+            <div >
+                <div class="container-fluid pt-3 line-date">
+                    <h4>
+                        <div class="scrollmenu row">
+                            <button class="col-2 btn-day" type="button" onclick="check('<%= D1 %>');">
+                                <span class="btn-det"><%= D1 %></span>
+                            </button>
+                            <button class="col-2 btn-day" type="button" onclick="check('<%= D2 %>');">
+                                <span  class="btn-det"><%= D2 %></span>
+                            </button>
+                            <button class="col-2 btn-day" type="button" onclick="check('<%= D3 %>');">
+                                <span  class="btn-det"><%= D3 %></span>
+                            </button>
+                            <button class="col-2 btn-day" type="button" onclick="check('<%= D4 %>');">
+                                <span  class="btn-det"><%= D4 %></span>
+                            </button>
+                            <button class="col-2 btn-day" type="button" onclick="check('<%= D5 %>');">
+                                <span  class="btn-det"><%= D5 %></span>
+                            </button>
+                            <button class="col-2 btn-day" type="button" onclick="check('<%= D6 %>');">
+                                <span  class="btn-det"><%= D6 %></span>
+                            </button>
+                            <input type="hidden" value="<%= D1 %>" name="showtimeDate" id="selectDay">
+                        </div>
+                    </h4>
+                </div>
+                <% var i = 0; %>
+                
+                    <div >
+                        <!-- ------- Theater 1 ------- -->
+                        <form action="/showtime/<%= Cinemas.id %>/<%= Movies.id %>" method="POST">
+                        
+                            <div class="container-fluid" >
+                                <div class="row">
+                                    <div class="header" style="display: flex;"><img src="<%= Cinemas.logo %>" width="80rem" height="80rem"><h3 class="cinema" style="padding-top: 20px; padding-left: 20px;"><%= Cinemas.name %></h3></div>
+                                    <h4 class="h4-theater" style=" width: 95%;">THEATER I <br><br>
+                                        <p class="button-control">
+                                            <button class="11 showtimeButton" type="submit" name="showtime[time]" value="11:00">11:00</button>
+                                            <button class="15 showtimeButton" type="submit" name="showtime[time]"  value="15:30">15:30</button>
+                                            <button class="18 showtimeButton" type="submit" name="showtime[time]"  value="18:00">18:00</button>
+                                            <button class="21 showtimeButton" type="submit" name="showtime[time]"  value="21:10">21:10</button>
+                                        </p>
+                                    </h4>
+                                </div>
+                            </div>
+                            <input type="hidden" value="<%= D1 %>" name="showtime[date]" id="selectDay1">
+                            <input type="hidden" name="showtime[theater]" value="1">
+                        </form>
+                        <!-- ------- End of Theater 1 ------- -->
 
-    <!-- End of Banner -->
+                        <!-- ------- Theater 2 ------- -->
+                        <form action="/showtime/<%= Cinemas.id %>/<%= Movies.id %>" method="POST">
 
-    <div class="container-fluid px-3 pt-3" style="height: 280px; background-color: rgb(61, 61, 61); position: relative;">
-        
-        <img class="mx-3" src="<%= Movies.image %>" height="250px" style="display: inline-block;">
-        
-        <!-- <h3 class="sessionMoviesTemplate" style="top: 50px; color: white;">
-            <%= Movies.name %>
-        </h3>
+                            <div class="container-fluid" >
+                                <div class="row">
+                                    <h4 class="h4-theater" style=" width: 95%;">THEATER II <br><br>
+                                        <p class="button-control">
+                                            <button class="13 showtimeButton" type="submit" name="showtime[time]"  value="13:00">13:00</button>
+                                            <button class="16 showtimeButton" type="submit" name="showtime[time]"  value="16:00">16:00</button>
+                                        </p>
+                                    </h4>    
+                                </div>
+                            </div>
+                            <input type="hidden" value="<%= D1 %>" name="showtime[date]" id="selectDay2">
+                            <input type="hidden" name="showtime[theater]" value="2">
+                        </form>
+                    
+                        <!-- ------- Theater 3 ------- -->
+                        <form action="/showtime/<%= Cinemas.id %>/<%= Movies.id %>" method="POST">
 
-        <h5 class="sessionMoviesTemplate" style="top: 110px; color: rgb(189, 189, 189);">
-            &nbsp;
-            <span style="color: white;">
-                Genre:
-            </span> 
-            <%= Movies.genre %>
-        </h5>
+                            <div class="container-fluid" >
+                                <div class="row">
+                                    <h4 class="h4-theater" style=" width: 95%;">THEATER III <br><br>
+                                        <p class="button-control">
+                                            <button class="12 showtimeButton" type="submit" name="showtime[time]" value="12:30">12:30</button>
+                                            <button class="14 showtimeButton" type="submit" name="showtime[time]" value="14:00">14:00</button>
+                                            <button class="19 showtimeButton" type="submit" name="showtime[time]" value="19:45">19:45</button>    
+                                        </p>
+                                    </h4>
+                                </div>
+                            </div>
+                            <input type="hidden" value="<%= D1 %>" name="showtime[date]" id="selectDay3">
+                            <input type="hidden" name="showtime[theater]" value="3">
+                        </form>
 
-        <h5 class="sessionMoviesTemplate" style="top: 150px; color: rgb(189, 189, 189);">
-            &nbsp;
-            <span style="color: white;">
-                Director:
-            </span> 
-            <%= Movies.director %>
-        </h5>
+                        <!-- ------- Theater 4 ------- -->
+                        <form action="/showtime/<%= Cinemas.id %>/<%= Movies.id %>" method="POST">
 
-        <h5 class="sessionMoviesTemplate" style="top: 190px; color: rgb(189, 189, 189);">
-            &nbsp;
-            <span style="color: white;">
-                Runtime:
-            </span> 
-            <%= Movies.time %> minutes
-        </h5> -->
-
-    </div>
-
-    <div class="container-fluid" style="height: 120px; background-color: rgb(41, 41, 41); position: relative;">
-        <div class="row">
-            <div class="col container-fluid" style="background-color: rgb(26, 26, 26); height: 120px; position: relative;">
-                <h3 class="center" style="color: white;">Theater 1</h3>
-            </div>
-            <div class="col-10 pt-3 px-5">
-                <button id="11" type="submit" name="showtime[time]" class="sessionTimeButton" value="11:00">11:00</button>
-                <button id="15" type="submit" name="showtime[time]" class="sessionTimeButton" value="15:00">15:00</button>
-                <button id="18" type="submit" name="showtime[time]" class="sessionTimeButton" value="18:00">18:00</button>
-                <button id="21" type="submit" name="showtime[time]" class="sessionTimeButton" value="21:00">21:00</button>
-            </div>  
+                            <div class="container-fluid" >
+                                <div class="row">
+                                    <h4 class="h4-theater" style=" width: 95%;">THEATER IV <br><br>
+                                        <p class="button-control">
+                                            <button class="10 showtimeButton" type="submit" name="showtime[time]"  value="10:00">10:00</button>
+                                            <button class="17 showtimeButton" type="submit" name="showtime[time]"  value="17:30">17:30</button>
+                                        </p>
+                                    </h4>
+                                </div>
+                            </div>
+                            <input type="hidden" value="<%= D1 %>" name="showtime[date]" id="selectDay4">
+                            <input type="hidden" name="showtime[theater]" value="4">
+                        </form>
+                    </div> <hr>
+            </div> 
         </div>
     </div>
-    <input type="hidden" name="showtime[theater]" value="1">
-</form>
-<!-- ------- End of Theater 1 ------- -->
-
-<!-- ------- Theater 2 ------- -->
-<form action="/showtime/<%= Cinemas.id %>/<%= Movies.id %>" method="POST">
-    <div class="container-fluid" style="height: 120px; background-color: rgb(41, 41, 41); position: relative;">
-        <div class="row">
-            <div class="col container-fluid" style="background-color: rgb(26, 26, 26); height: 120px; position: relative;">
-                <h3 class="center" style="color: white;">Theater 2</h3>
-            </div>
-            <div class="col-10 pt-3 px-5">
-                <button id="13" type="submit" name="showtime[time]" class="sessionTimeButton" value="13:00">13:00</button>
-                <button id="16" type="submit" name="showtime[time]" class="sessionTimeButton" value="16:00">16:00</button>
-            </div>  
-        </div>
-    </div>
-    <input type="hidden" name="showtime[theater]" value="2">
-</form>
-<!-- ------- End of Theater 2 ------- -->
 
 
-<script>
-    var weekday = new Array(7), month = new Array(12);
-    weekday[0] = "Sun", weekday[1] = "Mon", weekday[2] = "Tues", weekday[3] = "Wed", weekday[4] = "Thurs", weekday[5] = "Fri", weekday[6] = "Sat";
-    month[0] = "Jan", month[1] = "Feb",month[2] = "Mar", month[3] = "Apr", month[4] = "May", month[5] = "June", month[6] = "July", month[7] = "Aug", month[8] = "Sept", month[9] = "Oct", month[10] = "Nov", month[11] = "Dec";
 
-    var currentTime = new Date();
-    var hours = currentTime.getHours(), minutes = currentTime.getMinutes();
-    var todayDay = currentTime.getDay(), todayMonth = currentTime.getMonth(), todayDate = currentTime.getDate();
-    var today = weekday[todayDay] + ' ' + todayDate + ' ' + month[todayMonth];
-    var selectDay = document.getElementById("selectDay").value;
-
-    if ( today == selectDay ) {
-        if ( hours == 11 && minutes > 15 || hours > 11 ){
-            document.getElementById("11").disabled = true;
-        }
-        if ( hours >= 13 && minutes > 15 || hours > 13 ){
-            document.getElementById("13").disabled = true;
-        }
-        if ( hours >= 15 && minutes > 15 || hours > 15 ){
-            document.getElementById("15").disabled = true;
-        }
-        if ( hours >= 16 && minutes > 15 || hours > 16 ){
-            document.getElementById("16").disabled = true;
-        }
-        if ( hours >= 18 && minutes > 15 || hours > 18 ){
-            document.getElementById("18").disabled = true;
-        }
-        if ( hours >= 21 && minutes > 15 || hours > 21 ){
-            document.getElementById("21").disabled = true;
-        }
-    }
-
-    function check(checkSelectDay) {
-        if ( today == checkSelectDay ) {
+      <script>
+        var weekday = new Array(7), month = new Array(12);
+        weekday[0] = "Sun", weekday[1] = "Mon", weekday[2] = "Tues", weekday[3] = "Wed", weekday[4] = "Thurs", weekday[5] = "Fri", weekday[6] = "Sat";
+        month[0] = "Jan", month[1] = "Feb",month[2] = "Mar", month[3] = "Apr", month[4] = "May", month[5] = "June", month[6] = "July", month[7] = "Aug", month[8] = "Sept", month[9] = "Oct", month[10] = "Nov", month[11] = "Dec";
+    
+        var currentTime = new Date();
+        var hours = currentTime.getHours(), minutes = currentTime.getMinutes();
+        var todayDay = currentTime.getDay(), todayMonth = currentTime.getMonth(), todayDate = currentTime.getDate();
+        var today = weekday[todayDay] + ' ' + todayDate + ' ' + month[todayMonth];
+        var selectDay = document.getElementById("selectDay").value;
+    
+        if ( today == selectDay ) {
+            if ( hours == 10 && minutes > 15 || hours > 10 ){
+                var k = document.getElementsByClassName("10");
+                for( var i = 0; i < k.length; i++ ) {
+                     k[i].disabled = true;
+                }
+            }
             if ( hours >= 11 && minutes > 15 || hours > 11 ){
-                document.getElementById("11").disabled = true;
+                var k = document.getElementsByClassName("11");
+                for ( var i = 0; i < k.length; i++ ) {
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 12 && minutes > 15 || hours > 12 ){
+                var k = document.getElementsByClassName("12");
+                for ( var i = 0; i < k.length; i++ ) {
+                     k[i].disabled = true;
+                }
             }
             if ( hours >= 13 && minutes > 15 || hours > 13 ){
-                document.getElementById("13").disabled = true;
+                var k = document.getElementsByClassName("13");
+                for ( var i = 0; i <k.length; i++ ){
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 14 && minutes > 15 || hours > 14 ){
+                var k = document.getElementsByClassName("14");
+                for ( var i = 0; i < k.length; i++ ){
+                     k[i].disabled = true;
+                }
             }
             if ( hours >= 15 && minutes > 15 || hours > 15 ){
-                document.getElementById("15").disabled = true;
+                var k = document.getElementsByClassName("15");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                     
+                }
             }
             if ( hours >= 16 && minutes > 15 || hours > 16 ){
-                document.getElementById("16").disabled = true;
+                var k = document.getElementsByClassName("16");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                     
+                }
+            }
+            if ( hours >= 17 && minutes > 15 || hours > 17 ){
+                var k = document.getElementsByClassName("17");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                     
+                }
             }
             if ( hours >= 18 && minutes > 15 || hours > 18 ){
-                document.getElementById("18").disabled = true;
+                var k = document.getElementsByClassName("18");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 19 && minutes > 15 || hours > 19 ){
+                var k = document.getElementsByClassName("19");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                }
             }
             if ( hours >= 21 && minutes > 15 || hours > 21 ){
-                document.getElementById("21").disabled = true;
+                var k = document.getElementsByClassName("21");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                }
             }
-        } else if ( today != checkSelectDay ) {
-            document.getElementById("11").disabled = false;
-            document.getElementById("13").disabled = false;
-            document.getElementById("15").disabled = false;
-            document.getElementById("16").disabled = false;
-            document.getElementById("18").disabled = false;
-            document.getElementById("21").disabled = false;
         }
-    }
-</script>
+    
+        function check(checkSelectDay) {
+            if ( today == checkSelectDay ) {
+                if ( hours >= 10 && minutes > 15 || hours > 10 ){
+                    var k = document.getElementsByClassName("10");
+                    for ( var i = 0; i < k.length; i++ ){
+                        k[i].disabled = true;
+                        
+                    }
+                }
+                if ( hours >= 11 && minutes > 15 || hours > 11 ){
+                var k = document.getElementsByClassName("11");
+                for ( var i = 0; i < k.length; i++ ) {
+                     k[i].disabled = true;
+                     
+                }
+            }
+            if ( hours >= 12 && minutes > 15 || hours > 12 ){
+                var k = document.getElementsByClassName("12");
+                for ( var i = 0; i < k.length; i++ ) {
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 13 && minutes > 15 || hours > 13 ){
+                var k = document.getElementsByClassName("13");
+                for ( var i = 0; i <k.length; i++ ){
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 14 && minutes > 15 || hours > 14 ){
+                var k = document.getElementsByClassName("14");
+                for ( var i = 0; i < k.length; i++ ){
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 15 && minutes > 15 || hours > 15 ){
+                var k = document.getElementsByClassName("15");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 16 && minutes > 15 || hours > 16 ){
+                var k = document.getElementsByClassName("16");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 17 && minutes > 15 || hours > 17 ){
+                var k = document.getElementsByClassName("17");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 18 && minutes > 15 || hours > 18 ){
+                var k = document.getElementsByClassName("18");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 19 && minutes > 15 || hours > 19 ){
+                var k = document.getElementsByClassName("19");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                }
+            }
+            if ( hours >= 21 && minutes > 15 || hours > 21 ){
+                var k = document.getElementsByClassName("21");
+                for ( var i = 0; i < k.length; i++){
+                     k[i].disabled = true;
+                }
+            }
+            } else if ( today != checkSelectDay ) {
+                var k = document.getElementsByClassName("10");
+                    for ( var i = 0; i < k.length; i++ ) {
+                        k[i].disabled = false;
+                    }
+                    
+                var k = document.getElementsByClassName("11");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+                var k = document.getElementsByClassName("12");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+                var k = document.getElementsByClassName("13");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+                var k = document.getElementsByClassName("14");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+                var k = document.getElementsByClassName("15");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+                var k = document.getElementsByClassName("16");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+                var k = document.getElementsByClassName("17");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+                var k = document.getElementsByClassName("18");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+                var k = document.getElementsByClassName("19");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+                var k = document.getElementsByClassName("21");
+                for ( var i = 0; i < k.length; i++ ){
+                    k[i].disabled = false;
+                }
+            }
+            document.getElementById("selectDay").value = checkSelectDay;
+            document.getElementById("selectDay1").value = checkSelectDay;
+            document.getElementById("selectDay2").value = checkSelectDay;
+            document.getElementById("selectDay3").value = checkSelectDay;
+            document.getElementById("selectDay4").value = checkSelectDay;
+
+        }
+
+    </script>
 
 <%- include('../partials/footer.ejs') %>

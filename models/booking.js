@@ -9,7 +9,7 @@ var bookingSchema = new mongoose.Schema({
         username: String,
     },
 
-    date : String,
+    date: String,
     time: String,
     theater: Number,
     cinemaName: String,

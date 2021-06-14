@@ -5,9 +5,14 @@
 
     <!---------------------------------------- ONLY BOSS CAN SEE  ---------------------------------------->
 
+    
+
     <% if ( currentUser.status == 'boss' ) { %>
         <div class="album py-5">
             <div class="container">
+                <div class="about-review">
+                    <h1 class="h1-re">ADMIN <i class="fas fa-users-cog"></i></h1>
+                </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 lg-4">
                     <% var i = 0; %>
                     <% Admin.forEach(function(user){ %>
@@ -26,6 +31,7 @@
                                                 <h5 class="mt-3" style="color: green;">Status :  USER</h5>
                                             <% } %>    
                                         </p>
+
 
                                         <form action="/user/admin/retire/<%= user._id %>" method="POST">
 
@@ -46,14 +52,15 @@
                                                             Do you want to change &nbsp;<p style="font-weight: bold;"><%= user.username %></p>&nbsp; to user ?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Save</button>
+                                                            <button type="button" class="btn btn-1 btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-1 btn-primary">Save</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
-                
+                                        
+                                        
                                         <form action="/user/admin/delete/<%= user._id %>" method="POST">
                 
                                             <!-- Button trigger modal -->
@@ -66,20 +73,23 @@
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">DELETE ACCOUNT</h5>
+                                                            <h5 class="modal-title">DELETE ACCOUNT &nbsp;<i class="far fa-trash-alt"></i></h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body" style="display: flex;">
                                                             Do you want to delete &nbsp;<p style="font-weight: bold;"><%= user.username %></p>&nbsp; account?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Save</button>
+                                                            <button type="button" class="btn btn-1 btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-1 btn-primary">Confirm</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
+
+    
+
                                     </div>
                                 </div>
                             </a>
@@ -91,10 +101,14 @@
     <% } %>
 
 
+
     <!---------------------------------------- ONLY ADMIN CAN SEE  ---------------------------------------->
 
     <div class="album py-5">
         <div class="container">
+            <div class="about-review">
+                <h1 class="h1-re">USER <i class="fas fa-users"></i></h1>
+            </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
                 <% var i = 0; %>
                 <% User.forEach(function(user){ %>
@@ -128,8 +142,8 @@
                                                         Do you want to change &nbsp;<p style="font-weight: bold;"><%= user.username %></p>&nbsp; to admin ?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                        <button type="button" class="btn btn-1 btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-1 btn-primary">Save</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,7 +165,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel2">DELETE ACCOUNT</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel2">DELETE ACCOUNT &nbsp;<i class="far fa-trash-alt"></i></h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
@@ -163,7 +177,7 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        <button type="submit" class="btn btn-1 btn-primary">Confirm</button>
                                                     </div>
                                                 </div>
                                             </div>
