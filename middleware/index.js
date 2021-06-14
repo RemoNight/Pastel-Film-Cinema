@@ -5,7 +5,7 @@ var User    = require('../models/user');
 var middlewareObj = {};
 
 
-// check Admin
+// ------------------- check Admin ------------------- //
 
 middlewareObj.checkAdmin = function(req, res, next){
     if(req.isAuthenticated()){
@@ -27,7 +27,7 @@ middlewareObj.checkAdmin = function(req, res, next){
 
 
 
-// check commentOwner
+// ------------------- check commentOwner -------------------//
 
 middlewareObj.checkCommentOwner = function(req, res, next){
     if(req.isAuthenticated()){
@@ -50,7 +50,7 @@ middlewareObj.checkCommentOwner = function(req, res, next){
     }
 }
 
-// Log in
+// ------------------- Log in ------------------- //
 
 middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
