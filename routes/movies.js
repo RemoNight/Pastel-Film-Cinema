@@ -27,20 +27,7 @@ var express     = require('express'),
     User    = require('../models/user'),
     Liked   = require('../models/liked');
 
-
-// router.get('/', function(req, res){
-//     Movie.find({}, function(err, allMovies){
-//         if(err){
-//             console.log(err);
-//         } else {
-//             res.render('movies/index.ejs', {movie: allMovies});
-//         }
-//     });
-// });
-
-
-
-// add new movie
+// --------------------------- add new movie ---------------------------- //
 
 router.post('/', middleware.isLoggedIn, upload.single('image'), function(req, res){ // .single = กรณีไฟล์เดียว ถ้า .field = อัพหลายไฟล์ , 'image' มาจาก name='image' ของ movies/new.ejs บรรทัดที่ 15
     // req.body.movie // พวก name rating type และ บลาๆ ถูกเก็บไว้ในนี้แล้ว จาก movie[name]
@@ -49,11 +36,7 @@ router.post('/', middleware.isLoggedIn, upload.single('image'), function(req, re
         id: req.user._id,
         username: req.user.username
     };
-    // var newMovie = {
-    //     name:name,      image:image,    date: date, 
-    //     time: time,     actors: actors, trailer: trailer, 
-    //     rating: rating, type: type,     author: author
-    // };
+
     Movie.create(req.body.movie, function(err, newlyCreated){
         if(err){
             console.log(err);
@@ -70,7 +53,7 @@ router.get('/new', middleware.isLoggedIn, function(req,res){
 });
 
 
-// edit movie 
+// -------------------------- edit movie ------------------------- //
 
 router.get('/:id/edit', middleware.checkAdmin, function(req, res){
     Movie.findById(req.params.id, function(err, foundMovie){
@@ -97,7 +80,7 @@ router.put('/:id', upload.single('image'), function(req, res){
 });
 
 
-// delete movie
+// ---------------------- delete movie --------------------- //
 
 router.delete('/:id', middleware.checkAdmin, function(req, res){
     Movie.findByIdAndRemove(req.params.id, function(err){
@@ -112,7 +95,7 @@ router.delete('/:id', middleware.checkAdmin, function(req, res){
 
 
 
-//show movie & comment on show.ejs
+// --------------------- show movie & comment on show.ejs ---------------------- //
 
 router.get("/:id", function(req, res){
     Movie.findById(req.params.id).populate('comments').exec(function(err, foundMovie){
@@ -125,7 +108,7 @@ router.get("/:id", function(req, res){
 });
 
 
-// show movie and show time on showtime.ejs
+// -------------- show movie and show time on showtime.ejs --------------- //
 
 router.get("/:id/showtime", function(req, res){
     Movie.findById(req.params.id).populate('comments').exec(function(err, foundMovie){
@@ -145,7 +128,7 @@ router.get("/:id/showtime", function(req, res){
 
 
 
-// edit comment
+// ------------------------------------- edit comment ------------------------------------- //
 
 router.get('/:id/:comment_id/edit', middleware.checkCommentOwner, function(req, res){
     Comment.findById(req.params.comment_id, function(err, foundComment){
@@ -166,7 +149,7 @@ router.get('/:id/:comment_id/edit', middleware.checkCommentOwner, function(req, 
 
 
 
-// sorting genre
+// ------------------------------------- sorting genre ------------------------------------- //
 
 router.get('/genre-showing/:genre', function(req, res){
     Movie.find({type: 'coming'}, function(err, found_comingMovie){
@@ -202,7 +185,7 @@ router.get('/genre-coming/:genre', function(req, res){
 
 
 
-// search movie
+// ------------------------------------- search movie ------------------------------------- //
 
 router.post('/search-movie',function(req,res){
     console.log("Trying to search movie... " + req.body.search);
@@ -227,7 +210,7 @@ router.get('/search-movie/:name', function(req,res){
     });
 });
 
-// liked
+// ------------------------------------- like movie ------------------------------------- //
 
 router.post('/:id/like', middleware.isLoggedIn, function(req, res){
     User.findById(req.user._id, function(err, foundUsers){
@@ -257,6 +240,8 @@ router.post('/:id/like', middleware.isLoggedIn, function(req, res){
         }
     });
 });
+
+// ------------------------------------- unlike movie ------------------------------------- //
 
 router.post('/:id/unlike', middleware.isLoggedIn, function(req, res){
     User.update( {_id: req.user._id}, { $pull: { likes: req.params.id } } ).exec(function(err){

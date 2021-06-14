@@ -13,7 +13,7 @@
 }
 
 .dropdown {
-    padding-left: 100px;
+    /* padding-left: 100px; */
     padding-right: 5px;
 }
 
@@ -237,3 +237,10 @@
     outline: none;
 }
 
+/* .item-1{
+    margin-left: -100px;
+} */
+
+.item-2{
+    margin-left: 100px;
+}

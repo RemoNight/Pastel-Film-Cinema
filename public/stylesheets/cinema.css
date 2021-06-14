@@ -90,6 +90,7 @@ body {
     color: rgb(207, 87, 87);
 }
 
+
 #movie-coming {
     display: none;
 }
@@ -104,17 +105,17 @@ body {
     height: 450px;
 }
 
-.card-body, .card-text{
+.card-body, .card-text {
     margin-left: 40px;
 }
 
-.detail:active, .detail:hover .hide,  .detail:hover .card-body{
+.detail:active, .detail:hover .hide,  .detail:hover .card-body {
 
     display: block;
     color: rgb(207, 87, 87);
 }
 
-.hide{
+.hide {
     display: none;
     padding: 20px;
     border-radius: 2px 2px 2px 2px ;

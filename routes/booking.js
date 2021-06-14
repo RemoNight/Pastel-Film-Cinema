@@ -29,6 +29,9 @@ router.get('/:id', function(req, res){
     });
 });
 
+
+// ----------------------- Create seats ----------------------- //
+
 router.post('/:id', middleware.isLoggedIn, function(req, res){
     Showtime.findById(req.params.id, function(err, foundShowtime){
         if(err){

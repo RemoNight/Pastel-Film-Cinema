@@ -4,16 +4,23 @@ var express     = require('express'),
     Movie       = require('../models/movie'),
     passport    =  require('passport');
     
-
+// ------------------------------------- show movie on home page ------------------------------------- //
+    
 router.get('/', function(req, res){
-    Movie.find().sort({rating: -1}).limit(3).exec(function(err, rankMovies){
+
+    // sort rating
+    Movie.find().sort({rating: -1}).limit(3).exec(function(err, rankMovies){ 
         if(err){
             console.log(err);
         } else {
+
+            // show movie nowshowing
             Movie.find({type: "showing"}, function(err, showingMovies){
                 if(err){
                     console.log.apply(err);
                 } else {
+
+                    // show movie coming soon
                     Movie.find({type: "coming"}, function(err, comingMovies){
                         if(err){
                             console.log(err);
@@ -28,6 +35,7 @@ router.get('/', function(req, res){
 }); 
 
 
+// ------------------------------------- show movie on movie page ------------------------------------- //
 
 router.get('/movie', function(req, res){
     Movie.find({type: "showing"}, function(err, showingMovies){
@@ -45,6 +53,7 @@ router.get('/movie', function(req, res){
     });
 });
 
+// ------------------------------------- register account ------------------------------------- //
 
 router.get('/register', function(req, res){
     res.render('index/register.ejs');
@@ -68,6 +77,8 @@ router.post('/register', function(req, res){
     });
 });
 
+// ------------------------------------- login account ------------------------------------- //
+
 router.get('/login', function(req, res){
     res.render('index/login.ejs');
 });
@@ -81,10 +92,6 @@ router.post('/login', passport.authenticate('local',
         successFlash: 'Successfully log in',
         failureFlash: 'Invalid username or password'
     }), function(res, res){       
-});
-
-router.get('/profile', function(req, res){
-    res.render('index/profile.ejs');
 });
 
 router.get('/logout', function(req, res){

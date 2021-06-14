@@ -50,8 +50,7 @@ router.get('/', function(req, res){
     });
 });
 
-
-// search movie
+// ------------------------------------- search movie ------------------------------------- //
 
 router.post('/search-cinema',function(req,res){
     console.log("Trying to search cinema... " + req.body.search);
@@ -77,7 +76,7 @@ router.get('/search-cinema/:name', function(req,res){
 
 
 
-//  Create a new cinema
+// ------------------------------------- Create a new cinema ------------------------------------- //
 
 router.get('/new', middleware.checkAdmin, function(req,res){
     res.render('cinema/new.ejs');
@@ -96,7 +95,7 @@ router.post('/new', upload.fields([{ name: 'image' }, { name: 'logo' } ]), funct
 });
 
 
-//  Edit a cinema
+// ------------------------------------- Edit a cinema  ------------------------------------- //
 
 router.get('/:id/edit', middleware.checkAdmin,  function(req, res){
     Cinema.findById(req.params.id, function( err, foundCinemas ){
@@ -126,7 +125,7 @@ router.put('/:id', upload.fields([{ name: 'image' }, { name: 'logo' }]), functio
 });
 
 
-//  Delete a cinema
+// ------------------------------------- Delete a cinema ------------------------------------- // 
 
 router.delete('/:id', function(req, res){
     Cinema.findByIdAndRemove(req.params.id, function(err){
@@ -140,7 +139,7 @@ router.delete('/:id', function(req, res){
 
 
 
-//  Show movies that are available in the cinema
+// ---------------- Show movies that are available in the cinema ---------------- //
 
 router.get('/:id', function(req,res){
     Cinema.findById(req.params.id).exec(function(err, foundCinemas){

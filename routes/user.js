@@ -23,7 +23,7 @@ var express = require('express'),
     Booking = require('../models/booking');
 
     
-// Admin 
+// -------------------------- Admin ------------------------------ // 
 
 router.get('/admin', middleware.checkAdmin, function (req, res) {
     User.find({status: 'user'}, function (err, allUser) {
@@ -41,6 +41,8 @@ router.get('/admin', middleware.checkAdmin, function (req, res) {
     });
 });
 
+// -------------------------- Choose as an admin ------------------------------ // 
+
 router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
     User.findByIdAndUpdate(req.params.id,{status: 'admin'},function (err, result) {
         if (err) {
@@ -52,17 +54,7 @@ router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
     });
 });
 
-router.post('/admin/retire/:id', middleware.checkAdmin, function (req, res) {
-    User.findByIdAndUpdate(req.params.id,{status: 'user'},function (err, result) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("Updated User : ", result);
-            res.redirect('back');
-        }
-    });
-});
-
+// -------------------------- Delete account ------------------------------ //
 
 router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
     User.findByIdAndDelete(req.params.id, function(err, result) {
@@ -77,7 +69,7 @@ router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
 
 
 
-// Profile: Show information & Like list & Ticket
+// ------------- Profile: Show information & Like list & Ticket ------------- //
 
 router.get('/profile/:id', isLoggedIn, function (req, res) {
     User.findById(req.params.id).exec(function (err, foundUsers) {
@@ -101,6 +93,8 @@ router.get('/profile/:id', isLoggedIn, function (req, res) {
     });
 });
 
+
+// -------------------------- Edit Picture on profile ------------------------------ //
 
 router.post('/profile/:id', isLoggedIn, upload.single('image'), function (req, res){
     User.findByIdAndUpdate(req.params.id,

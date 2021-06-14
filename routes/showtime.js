@@ -7,6 +7,7 @@ var express     = require('express'),
     Cinema     = require('../models/cinema'),
     User        = require('../models/user');
 
+// -------------------------- showtime ------------------------------ //
 
 router.get('/:cid/:mid', function(req, res){
     Cinema.findById(req.params.cid, function(err, foundCinemas){
@@ -25,6 +26,7 @@ router.get('/:cid/:mid', function(req, res){
     });
 });
 
+// -------------------------- check showtime & create showtime ----------------------------- //
 
 router.post('/:cid/:mid', function(req, res){
     Showtime.find({ date: req.body.showtime.date, time: req.body.showtime.time, cinema: req.params.cid, movies: req.params.mid }, function(err, result){

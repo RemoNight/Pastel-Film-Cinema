@@ -8,11 +8,7 @@ var likedSchema = new mongoose.Schema({
         },
         image: String,
         name: String
-    },
-    date: {
-        type: Date,
-        default: Date.now
-    },
+    }
 });
 
 module.exports = mongoose.model('Liked', likedSchema);

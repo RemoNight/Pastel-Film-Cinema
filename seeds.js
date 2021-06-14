@@ -16,6 +16,7 @@ var data = [
         actors: 'Daisy Ridley, John Boyega, Oscar Isaac',
         trailer: 'https://www.youtube.com/embed/sGbxmsDFVnE',
         rating: '0',
+        location: 'chi',
         type: 'coming'
 
     },
@@ -28,6 +29,7 @@ var data = [
         actors: 'Tom Holland',
         trailer: 'https://www.youtube.com/embed/NTunTURbyUU',
         rating: '6.8',
+        location: 'port',
         type: 'showing'
     },
     {
@@ -39,6 +41,7 @@ var data = [
         actors: ' Dylan OBrien, Thomas brodie Sangster',
         trailer: 'https://www.youtube.com/embed/4-BTxXm8KSg',
         rating: '0',
+        location: 'chi',
         type: 'coming'
     },
     {
@@ -50,6 +53,7 @@ var data = [
         actors: ' Dylan OBrien, Thomas brodie Sangster',
         trailer: 'https://www.youtube.com/embed/4-BTxXm8KSg',
         rating: '7.3',
+        location: 'chi',
         type: 'showing'
     },
     {
@@ -61,6 +65,7 @@ var data = [
         actors: ' Jason Momoa, Amber Heard',
         trailer: 'https://www.youtube.com/embed/WDkg3h8PCVU',
         rating: '8.2',
+        location: 'houst',
         type: 'showing'
     },
     {
@@ -72,6 +77,7 @@ var data = [
         time: '97 Mins',
         trailer:'https://www.youtube.com/embed/BpdDN9d9Jio',
         genre: 'Horror',
+        location: 'port',
         type: 'coming'
 
     },
@@ -84,6 +90,7 @@ var data = [
         time:'149 Mins',
         trailer:'https://www.youtube.com/embed/EFYEni2gsK0',
         genre: 'Action / Crime',
+        location: 'houst',
         type: 'coming'
     },
     {
@@ -95,6 +102,7 @@ var data = [
         time:'163 Mins',
         trailer:'https://www.youtube.com/embed/e0fy8aqe4Aw',
         genre: 'Sci-Fi / Action',
+        location: 'port',
         type: 'showing'
     },
     {
@@ -106,6 +114,7 @@ var data = [
         time:'106 Mins',
         trailer:'https://www.youtube.com/embed/9nlhmJF5FNI',
         genre: 'Comedy / Fantasy',
+        location: 'houst',
         type: 'coming'
     },
     {
@@ -117,6 +126,7 @@ var data = [
         time:'163 Mins',
         trailer:'https://www.youtube.com/embed/7i5kiFDunk8',
         genre: 'Comedy / Crime / Drama',
+        location: 'port',
         type: 'coming'
     },
     {
@@ -128,6 +138,7 @@ var data = [
         time:'115 Mins',
         trailer:'https://www.youtube.com/embed/wZti8QKBWPo',
         genre: 'Action / Crime / Drama',
+        location: 'chi',
         type: 'showing'
     },
     {
@@ -139,6 +150,7 @@ var data = [
         time:'180 Mins',
         trailer:'https://www.youtube.com/embed/gmRKv7n2If8',
         genre: 'Comedy / Crime',
+        location: 'houst',
         type: 'showing'
     }
 ];

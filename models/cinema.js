@@ -5,8 +5,6 @@ var cinemaSchema = new mongoose.Schema({
     area: String,
     tel: String,
     slogan: String,
-
-    //  Media
     image: String,
     logo: String,
 });

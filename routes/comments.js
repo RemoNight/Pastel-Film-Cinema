@@ -4,17 +4,7 @@ var express = require('express'),
     middleware = require('../middleware'),
     Comment = require('../models/comment');
 
-// add comments
-
-// router.get('/new', middleware.isLoggedIn, function (req, res) {
-//     Movie.findById(req.params.id, function (err, foundMovie) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.render("comments/new.ejs", { movie: foundMovie });
-//         }
-//     });
-// });
+// ------------------------------------- add comments ------------------------------------- //
 
 router.post('/', middleware.isLoggedIn, function (req, res) {
     Movie.findById(req.params.id, function (err, foundMovie) {
@@ -40,7 +30,7 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
     });
 });
 
-// edit comment 
+// ------------------------------------- edit comment ------------------------------------- //
 
 router.put('/:comment_id', middleware.checkCommentOwner, function(req, res){
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
@@ -53,7 +43,7 @@ router.put('/:comment_id', middleware.checkCommentOwner, function(req, res){
     });
 });
 
-// delete comment
+// ------------------------------------- delete comment ------------------------------------- //
 
 router.delete('/:comment_id', middleware.checkCommentOwner, function(req, res){
     Comment.findByIdAndRemove(req.params.comment_id, function(err){
